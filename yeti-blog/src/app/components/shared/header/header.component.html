@@ -1,27 +1,30 @@
 <header>
     <nav>
         <section class="logo-holder">
-            <img src="../../../../assets/site_logo.png" alt="">
+            <img src="../../../../assets/site_logo.png" alt="" routerLink="/">
         </section>
         <ul>
-            <li routerLink="/"><a>Home</a></li>
-            <li><a>Write a blog</a></li>
-            <li routerLink="blogs"><a>Blogs</a></li>
+            <li><a routerLink="/">Home</a></li>
+            <li><a routerLink="/blogs/all">All Blogs</a></li>
+            <li><a routerLink="/blogs/new">Write</a></li>
+            <li><a routerLink="/blogs/popular">Hot Blogs</a></li>
         </ul>
 
         <ul *ngIf="!this.isLogged">
-            <li><a>Login</a></li>
-            <li><a>Register</a></li>
+            <li><a routerLink="/auth/login">Login</a></li>
+            <li><a routerLink="/auth/register">Register</a></li>
         </ul>
         <ul *ngIf="this.isLogged">
             <li>
                 <a>
                     <section class="logo-holder">
-                        <img class="profile-pic" src="{{userPic}}" alt="" />
+                        <a routerLink="/user/profile">
+                            <img class="profile-pic" src="{{userPic}}" alt="" />
+                        </a>
                     </section>
                 </a>
             </li>
-            <li><a>Logout</a></li>
+            <li><a routerLink="/auth/logout">Logout</a></li>
         </ul>
     </nav>
 </header>

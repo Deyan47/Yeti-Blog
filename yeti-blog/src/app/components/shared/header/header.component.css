@@ -1,5 +1,5 @@
 header {
-  background-color: blue;
+  background-color: #0004ff;
 }
 nav {
   display: flex;
@@ -16,6 +16,7 @@ nav {
   border-radius: 50%;
   width: 100%;
   object-fit: contain;
+  cursor: pointer;
 }
 header ul {
   display: flex;
@@ -28,12 +29,10 @@ header ul li a {
   margin: 15px;
   color: #fff;
   font-size: 15px;
+  text-decoration: none;
 }
 .profile-pic {
   width: 80px;
   border-radius: 50%;
-}
-
-header ul li {
   cursor: pointer;
 }

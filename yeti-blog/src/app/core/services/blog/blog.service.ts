@@ -2,15 +2,24 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Blog } from '../../models/blog/blog';
-import { AngularFirestore } from 'angularfire2/firestore';
 
+import {
+  AngularFirestore,
+  AngularFirestoreCollection,
+  AngularFirestoreDocument,
+} from 'angularfire2/firestore';
 
 @Injectable()
 export class BlogService {
+  blogs!: Observable<Blog[]>;
+  tags: string[] = [];
 
-  blogs: Observable<Blog[]>;
-  
   constructor(public afs: AngularFirestore) {
+    this.loadAllBlogs();
+    this.loadAllTags();
+  }
+
+  private loadAllBlogs(): void {
     this.blogs = this.afs
       .collection('blogs')
       .snapshotChanges()
@@ -24,7 +33,21 @@ export class BlogService {
         })
       );
   }
+  private loadAllTags(): void {
+    this.blogs.forEach((blogs) => {
+      blogs.forEach((blog) => {
+        blog.tags.forEach((tag) => {
+          if (this.tags.indexOf(tag) === -1) {
+            this.tags.push(tag);
+          }
+        });
+      });
+    });
+  }
 
+  getAllTags() {
+    return this.tags;
+  }
   getAllBlogs() {
     return this.blogs;
   }
