@@ -10,12 +10,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./create-blog.component.css'],
 })
 export class CreateBlogComponent implements OnInit {
-
   blog: any = {
     title: '',
     imgUrl: '',
     content: '',
+    tags: [],
   };
+  tags: string = '';
 
   constructor(private blogService: BlogService, private router: Router) {}
 
@@ -27,10 +28,12 @@ export class CreateBlogComponent implements OnInit {
       this.blog.imgUrl != '' &&
       this.blog.content != ''
     ) {
+      this.blog.tags = this.tags.replace(' ', '').split(',');
       this.blogService.addNewBlog(
         this.blog.title,
         this.blog.imgUrl,
-        this.blog.content
+        this.blog.content,
+        this.blog.tags
       );
       this.router.navigateByUrl('blogs');
     }

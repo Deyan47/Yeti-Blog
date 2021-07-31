@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './components/shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { HomeComponent } from './components/home/home.component';
 
 import { AngularFireModule } from 'angularfire2';
@@ -20,6 +20,9 @@ import { BlogService } from './core/services/blog/blog.service';
 import { BlogItemComponent } from './components/blogs/blog-item/blog-item.component';
 import { BlogArticleComponent } from './components/blogs/blog-article/blog-article.component';
 import { CreateBlogComponent } from './components/blogs/create-blog/create-blog.component';
+
+import { MatChipsModule } from '@angular/material/chips';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,8 +41,10 @@ import { CreateBlogComponent } from './components/blogs/create-blog/create-blog.
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase, 'easy-blog'),
     AngularFirestoreModule,
+    MatChipsModule,
   ],
   providers: [BlogService],
   bootstrap: [AppComponent],
 })
+
 export class AppModule {}

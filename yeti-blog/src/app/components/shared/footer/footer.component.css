@@ -1,17 +1,13 @@
 .footer {
   padding: 9px;
   width: 100%;
-  position: absolute;
+  position: sticky;
   bottom: 0;
   left: 0;
   text-align: center;
   background-color: #0004ff;
 }
-.footer a {
-  text-decoration: none;
-  font-weight: bold;
-  color: #fff;
-}
+
 .footer p {
   display: inline-block;
   font-weight: 400;
