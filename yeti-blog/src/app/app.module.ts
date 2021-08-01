@@ -30,6 +30,7 @@ import { BlogsComponent } from './components/blogs/blogs/blogs.component';
 import { BlogItemComponent } from './components/blogs/blog-item/blog-item.component';
 import { BlogArticleComponent } from './components/blogs/blog-article/blog-article.component';
 import { CreateBlogComponent } from './components/blogs/create-blog/create-blog.component';
+import { TagsComponent } from './components/blogs/tags/tags.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { CreateBlogComponent } from './components/blogs/create-blog/create-blog.
     BlogItemComponent,
     BlogArticleComponent,
     CreateBlogComponent,
+    TagsComponent,
   ],
   imports: [
     BrowserModule,
