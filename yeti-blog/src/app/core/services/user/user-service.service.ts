@@ -7,10 +7,30 @@ export class UserService {
   constructor(private blogService: BlogService) {}
 
   get isLogged(): boolean {
-    return true;
+    return localStorage['isLogged'] != undefined;
+  }
+
+  login(email: string, password: string) {
+    localStorage.setItem('isLogged', email);
+  }
+
+  register(
+    username: string,
+    email: string,
+    password: string,
+    bio: string,
+    imgUrl: string
+  ) {
+
+    localStorage.setItem('userImg', imgUrl);
+    localStorage.setItem('isLogged', email);
+  }
+
+  logout() {
+    localStorage.removeItem('isLogged');
   }
 
   get getUserPic(): string {
-    return 'https://i.ytimg.com/vi/MPV2METPeJU/maxresdefault.jpg';
+    return localStorage['userImg'];
   }
 }

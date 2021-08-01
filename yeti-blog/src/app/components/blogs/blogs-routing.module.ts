@@ -3,8 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from 'src/app/core/guards/auth.guard';
 import { NotFoundComponent } from '../shared/not-found/not-found.component';
 import { BlogArticleComponent } from './blog-article/blog-article.component';
-import { CreateBlogComponent } from './create-blog/create-blog.component';
 import { BlogsComponent } from './blogs/blogs.component';
+import { CreateBlogComponent } from './create-blog/create-blog.component';
 
 const routes: Routes = [
   {
@@ -14,12 +14,10 @@ const routes: Routes = [
       {
         path: 'all',
         component: BlogsComponent,
-        data: { isLogged: null },
       },
       {
         path: 'blog/:id',
         component: BlogArticleComponent,
-        data: { isLogged: null },
       },
       {
         path: 'new',

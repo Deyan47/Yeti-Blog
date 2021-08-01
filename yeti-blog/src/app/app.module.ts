@@ -11,6 +11,11 @@ import { HomeComponent } from './components/home/home.component';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import {
+  AngularFireStorageModule,
+  AngularFireStorageReference,
+  AngularFireUploadTask,
+} from '@angular/fire/storage';
 
 import { CKEditorModule } from 'ng2-ckeditor';
 
@@ -47,8 +52,9 @@ import { CreateBlogComponent } from './components/blogs/create-blog/create-blog.
     BrowserAnimationsModule,
     CKEditorModule,
     FormsModule,
-    AngularFireModule.initializeApp(environment.firebase, 'easy-blog'),
+    AngularFireModule.initializeApp(environment.firebase, 'yeti-blog'),
     AngularFirestoreModule,
+    AngularFireStorageModule,
     MatChipsModule,
   ],
   providers: [BlogService, AuthGuard, UserService],
