@@ -1,4 +1,5 @@
 <section class="blogs-wrapper">
+    <button class="sort-btn" (click)="sortHandler()">Sort by views</button>
     <mat-spinner class="spinner" *ngIf="this.blogs.length <= 0"></mat-spinner>
     <section class="content" *ngIf="this.blogs.length > 0">
         <section class="cards">

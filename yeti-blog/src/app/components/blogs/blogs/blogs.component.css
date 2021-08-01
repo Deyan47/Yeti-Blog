@@ -57,3 +57,14 @@ ul li a {
   border: 1px solid #024094;
   padding: 10px 20px;
 }
+.sort-btn {
+  cursor: pointer;
+  width: 10%;
+  outline: none;
+  background-color: darkviolet;
+  color: white;
+  border: 1px solid purple;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
