@@ -7,7 +7,6 @@
             <li><a routerLink="/">Home</a></li>
             <li><a routerLink="/blogs/all">All Blogs</a></li>
             <li><a routerLink="/blogs/new">Write</a></li>
-            <li><a routerLink="/blogs/popular">Hot Blogs</a></li>
         </ul>
 
         <ul *ngIf="!this.isLogged">
@@ -18,8 +17,8 @@
             <li>
                 <a>
                     <section class="logo-holder">
-                        <a routerLink="/user/profile">
-                            <img class="profile-pic" src="{{userPic}}" alt="" />
+                        <a routerLink="/user/{{user.id}}">
+                            <img class="profile-pic" src="{{user.imgUrl}}" alt="" />
                         </a>
                     </section>
                 </a>

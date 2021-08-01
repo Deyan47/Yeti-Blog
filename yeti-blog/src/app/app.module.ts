@@ -25,13 +25,14 @@ import { BlogsRoutingModule } from './components/blogs/blogs-routing.module';
 
 import { BlogService } from './core/services/blog/blog.service';
 import { UserService } from './core/services/user/user-service.service';
+import { ImgService } from './core/services/img/img.service';
 
 import { BlogsComponent } from './components/blogs/blogs/blogs.component';
 import { BlogItemComponent } from './components/blogs/blog-item/blog-item.component';
 import { BlogArticleComponent } from './components/blogs/blog-article/blog-article.component';
-import { CreateBlogComponent } from './components/blogs/create-blog/create-blog.component';
+import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
 import { TagsComponent } from './components/blogs/tags/tags.component';
-
+import { CreateBlogComponent } from './components/blogs/create-blog/create-blog.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { TagsComponent } from './components/blogs/tags/tags.component';
     BlogArticleComponent,
     CreateBlogComponent,
     TagsComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,7 +60,7 @@ import { TagsComponent } from './components/blogs/tags/tags.component';
     MatChipsModule,
     MatProgressSpinnerModule,
   ],
-  providers: [BlogService, AuthGuard, UserService],
+  providers: [BlogService, AuthGuard, UserService, ImgService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,12 +1,16 @@
+import { Blog } from '../blog/blog';
+import { Achievment } from './achievment';
+
 export interface User {
-    id: string;
-    username: string;
-    password: string;
-    email: string;
-    bio: string;
-    imgUrl: string;
-    likes?: string[];
-    comments?: string[];
-    views?: string[];
-    blogs?: string[];
-  }
+  id: string;
+  username: string;
+  password: string;
+  email: string;
+  bio: string;
+  imgUrl: string;
+  likes?: string[];
+  comments?: string[];
+  views?: string[];
+  blogs?: Blog[];
+  achievements?: Achievment[];
+}

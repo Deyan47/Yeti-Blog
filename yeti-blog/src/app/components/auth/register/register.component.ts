@@ -1,25 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize } from 'rxjs/operators';
-import { interval, Observable } from 'rxjs';
+import { interval, Observable, Subscription } from 'rxjs';
 import { UserService } from 'src/app/core/services/user/user-service.service';
 import { Router } from '@angular/router';
+import { ImgService } from 'src/app/core/services/img/img.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-  fileLink: any;
-  downloadURL!: Observable<string>;
-
+  private subscriptions: Array<Subscription> = [];
   constructor(
-    private storage: AngularFireStorage,
+    private ImgService: ImgService,
     private userService: UserService,
     private router: Router
   ) {}
 
   ngOnInit(): void {}
+
+  public ngOnDestroy(): void {
+    this.subscriptions.forEach((subscription: Subscription) => {
+      subscription.unsubscribe();
+    });
+  }
 
   onRegister(
     username: string,
@@ -29,40 +34,23 @@ export class RegisterComponent implements OnInit {
     bio: string,
     profilePic: HTMLInputElement
   ) {
-    this.uploadImage(username, profilePic, 'ProfileImages');
-    interval(3000)
-      .pipe()
-      .subscribe(() => {
-        this.userService.register(
-          username,
-          email,
-          password,
-          bio,
-          this.fileLink
-        );
+    this.ImgService.uploadImage(username, profilePic, 'ProfileImages');
 
-        this.router.navigateByUrl('/');
-        window.location.reload();
-      });
-  }
+    this.subscriptions.push(
+      interval(3000)
+        .pipe()
+        .subscribe(() => {
+          this.userService.register(
+            username,
+            email,
+            password,
+            bio,
+            this.ImgService.fileLink
+          );
 
-  uploadImage(fileName: string, image: HTMLInputElement, path: string) {
-    const file = image.files![0];
-    const filePath = `${path}/${fileName}`;
-    const fileRef = this.storage.ref(filePath);
-    const task = this.storage.upload(`${path}/${fileName}`, file);
-    task
-      .snapshotChanges()
-      .pipe(
-        finalize(() => {
-          this.downloadURL = fileRef.getDownloadURL();
-          this.downloadURL.subscribe((url) => {
-            if (url) {
-              this.fileLink = url;
-            }
-          });
+          this.router.navigateByUrl('/');
+          window.location.reload();
         })
-      )
-      .subscribe();
+    );
   }
 }
