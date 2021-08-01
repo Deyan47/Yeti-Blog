@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatChipsModule } from '@angular/material/chips';
 import { FormsModule } from '@angular/forms';
+
+import { MatChipsModule } from '@angular/material/chips';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,11 +13,7 @@ import { HomeComponent } from './components/home/home.component';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
-import {
-  AngularFireStorageModule,
-  AngularFireStorageReference,
-  AngularFireUploadTask,
-} from '@angular/fire/storage';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { CKEditorModule } from 'ng2-ckeditor';
 
@@ -56,6 +54,7 @@ import { CreateBlogComponent } from './components/blogs/create-blog/create-blog.
     AngularFirestoreModule,
     AngularFireStorageModule,
     MatChipsModule,
+    MatProgressSpinnerModule,
   ],
   providers: [BlogService, AuthGuard, UserService],
   bootstrap: [AppComponent],
