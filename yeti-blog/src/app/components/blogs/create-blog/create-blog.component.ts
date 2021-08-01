@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { Router } from '@angular/router';
+
 import { finalize } from 'rxjs/operators';
 import { interval, Observable, Subscription } from 'rxjs';
 
-import { Router } from '@angular/router';
 import { BlogService } from 'src/app/core/services/blog/blog.service';
 
 @Component({
@@ -12,6 +13,7 @@ import { BlogService } from 'src/app/core/services/blog/blog.service';
   styleUrls: ['./create-blog.component.css'],
 })
 export class CreateBlogComponent implements OnInit {
+  error: any;
   fileLink: any;
   downloadURL!: Observable<string>;
 
@@ -42,7 +44,10 @@ export class CreateBlogComponent implements OnInit {
 
   onSubmit(blogImg: HTMLInputElement) {
     this.isLoading = true;
-    if (this.blog.title != '' && this.blog.content != '') {
+    if (
+      (this.blog.title != '' && this.blog.content != '') ||
+      blogImg == undefined
+    ) {
       this.uploadImage(this.blog.title, blogImg, 'BlogImages');
       this.subscriptions.push(
         interval(3000)
@@ -55,10 +60,21 @@ export class CreateBlogComponent implements OnInit {
               this.blog.content,
               this.blog.tags
             );
+            this.error = {};
             this.isLoading = false;
             this.router.navigateByUrl('blogs/all');
           })
       );
+    } else {
+      this.isLoading = false;
+      this.error = {
+        title: 'Error!',
+        message: 'All fields are required!',
+        class: 'danger',
+      };
+      interval(3000).subscribe(() => {
+        this.error = {};
+      });
     }
   }
 
