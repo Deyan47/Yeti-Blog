@@ -36,8 +36,7 @@ export class UserServiceService {
   constructor(
     private fireAuth: AngularFireAuth,
     private router: Router,
-    public afs: AngularFirestore,
-    
+    public afs: AngularFirestore
   ) {
     this.usersCollection = this.afs.collection('users');
     this.users = this.usersCollection.snapshotChanges().pipe(
@@ -49,28 +48,28 @@ export class UserServiceService {
         });
       })
     );
-
-    if (localStorage['user_data']) {
-      this.userInfo = JSON.parse(localStorage['user_data']);
-    }
   }
   
 
   get isLogged(): boolean {
     return localStorage['user_data'] != undefined;
   }
+  get isAdmin(): boolean {
+    if (this.isLogged) {
+      return JSON.parse(localStorage['user_data']).isAdmin != undefined;
+    }
+    return false;
+  }
 
   login(email: string, password: string) {
-    return this.fireAuth.auth.signInWithEmailAndPassword(email, password)
-      .then((userData:any) => {
+    return this.fireAuth.auth
+      .signInWithEmailAndPassword(email, password)
+      .then((userData) => {
         this.users.subscribe((users) => {
           let user = users.filter((x) => x.email === email)[0];
           this.addUserToLocalStorage(JSON.stringify(user));
+          this.router.navigateByUrl('/');
         });
-      })
-      .catch((err:any) => alert(err.message))
-      .finally(() => {
-        this.router.navigateByUrl('/');
       });
   }
 
@@ -81,18 +80,16 @@ export class UserServiceService {
     bio: string,
     imgUrl: string
   ) {
-    return this.fireAuth.auth.createUserWithEmailAndPassword(email, password)
-      .then((userData:any) => {
+    return this.fireAuth.auth
+      .createUserWithEmailAndPassword(email, password)
+      .then((userData) => {
         let user: User = {
           firebaseId: userData.user!.uid!,
           username: username,
           email: email,
           bio: bio,
-          likes: [],
-          blogs: [],
-          comments: [],
-          views: [],
           imgUrl: imgUrl,
+          
         };
 
         this.usersCollection.add(user);
@@ -107,14 +104,17 @@ export class UserServiceService {
       });
   }
 
+ 
+
+  
+
   logout() {
-    return this.fireAuth.auth.signOut()
-      .then((data:any) => {})
-      .catch((err:any) => alert(err.message))
+    return this.fireAuth.auth
+      .signOut()
+      .catch((err) => alert(err.message))
       .finally(() => {
         localStorage.removeItem('user_data');
         this.router.navigateByUrl('/');
-        window.location.reload();
       });
   }
 
@@ -122,56 +122,55 @@ export class UserServiceService {
     localStorage['user_data'] = userData;
   }
 
-  get getUserPic(): string {
-    return this.currentUser.imgUrl;
-  }
+  
 
-  addAchievmentToUser(user: User, text: string) {
-    user.achievements?.push({ content: text, imgUrl: this.achievmentImgUrl });
-  }
-
-  checkIfUserIsEligbleForAchievement(user: User) {
-    var blogsWritten = user.blogs!.length;
-
-    switch (blogsWritten) {
-      case 1:
-        this.addAchievmentIsNotYetEarned(user, 'First blog written!');
-        break;
-      case 5:
-        this.addAchievmentIsNotYetEarned(user, '5 blog written!');
-        break;
-      case 10:
-        this.addAchievmentIsNotYetEarned(user, '10 blog written!');
-        break;
-      case 20:
-        this.addAchievmentIsNotYetEarned(user, '20 blog written!');
-        break;
-      case 50:
-        this.addAchievmentIsNotYetEarned(user, '50 blog written!');
-        break;
-      case 100:
-        this.addAchievmentIsNotYetEarned(user, '100 blog written!');
-        break;
-    }
-  }
-
-  addAchievmentIsNotYetEarned(user: User, content: string) {
-    if (!user.achievements?.some((x) => x.content.includes(content))) {
-      user.achievements?.push({
-        content: content,
+  checkIfUserIsEligbleForAchievement(blogsWritten: number) {
+    let achievments = Array<Achievment>();
+    if (blogsWritten >= 1)
+      achievments.push({
+        content: '1 blog written!',
         imgUrl: this.achievmentImgUrl,
       });
-    }
+    if (blogsWritten >= 5)
+      achievments.push({
+        content: '5 blogs written!',
+        imgUrl: this.achievmentImgUrl,
+      });
+    if (blogsWritten >= 10)
+      achievments.push({
+        content: '10 blogs written!',
+        imgUrl: this.achievmentImgUrl,
+      });
+    if (blogsWritten >= 20)
+      achievments.push({
+        content: '20 blogs written!',
+        imgUrl: this.achievmentImgUrl,
+      });
+    if (blogsWritten >= 50)
+      achievments.push({
+        content: '50 blogs written!',
+        imgUrl: this.achievmentImgUrl,
+      });
+    if (blogsWritten >= 100)
+      achievments.push({
+        content: '100 blogs written!',
+        imgUrl: this.achievmentImgUrl,
+      });
+
+    return achievments;
   }
 
-  updateUser() {
-    //this.checkIfUserIsEligbleForAchievement(this.currentUser);
-
-    this.userDoc = this.afs.doc(`users/${this.currentUser.id}`);
-    this.userDoc.update(this.currentUser);
+  updateUser(user: User) {
+    this.userDoc = this.afs.doc(`users/${user.id}`);
+    this.userDoc.update(user);
   }
 
   get currentUser(): User {
+    this.userInfo = JSON.parse(localStorage['user_data']);
     return this.userInfo as User;
+  }
+
+  getAllUsers() {
+    return this.users;
   }
 }
