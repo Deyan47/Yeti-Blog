@@ -17,16 +17,16 @@
 }
 .danger {
   background-color: #f8d7da;
-  color: #990413;
-  border: 1px solid #990413;
+  color: #721c24;
+  border: 1px solid #721c24;
 }
 .warning {
   background-color: #fff3cd;
-  color: #c29202;
-  border: 1px solid #c29202;
+  color: #856404;
+  border: 1px solid #856404;
 }
 .success {
   background-color: #d4edda;
-  color: #047c20;
-  border: 1px solid #047c20;
+  color: #155724;
+  border: 1px solid #155724;
 }

@@ -1,23 +1,27 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { User } from 'src/app/core/models/user/user';
-import { UserService } from '../../../core/services/user/user-service.service';
+import { UserServiceService } from '../../../core/services/user/user-service.service';
 
+import { AngularFireStorage } from 'angularfire2/storage';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
+
 export class HeaderComponent implements OnInit {
   public isLogged: boolean = false;
   public user!: User;
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(private userService: UserServiceService, private router: Router) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.isLogged = this.userService.isLogged;
-    this.user = this.userService.currentUser;
+    if (this.isLogged) {
+      this.user = this.userService.currentUser;
+    }
+    console.log(this.user);
   }
 
   logout() {

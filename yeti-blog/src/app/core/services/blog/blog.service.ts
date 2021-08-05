@@ -4,7 +4,7 @@ import { map } from 'rxjs/operators';
 import { Blog } from '../../models/blog/blog';
 import { BlogComment } from '../../models/blog/comment';
 
-import { UserService } from '../user/user-service.service';
+import { UserServiceService } from '../user/user-service.service';
 
 import {
   AngularFirestore,
@@ -20,7 +20,7 @@ export class BlogService {
   blogs!: Observable<Blog[]>;
   tags: string[] = [];
 
-  constructor(public afs: AngularFirestore, private userService: UserService) {
+  constructor(public afs: AngularFirestore, private userService: UserServiceService) {
     this.initiateBlogsCollection();
     this.loadAllBlogs();
     this.loadAllTags();
@@ -75,7 +75,6 @@ export class BlogService {
     };
 
     this.blogsCollection.add(blog);
-    //this.userService.addBlogToUser(blog);
   }
 
   addComment(blog: Blog, content: string) {

@@ -1,10 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-
 import { Blog } from 'src/app/core/models/blog/blog';
-
 import { BlogService } from 'src/app/core/services/blog/blog.service';
-import { UserService } from 'src/app/core/services/user/user-service.service';
-
+import { UserServiceService } from 'src/app/core/services/user/user-service.service';
 @Component({
   selector: 'app-blog-item',
   templateUrl: './blog-item.component.html',
@@ -15,15 +12,15 @@ export class BlogItemComponent implements OnInit {
 
   constructor(
     private blogService: BlogService,
-    private userService: UserService
+    private userService: UserServiceService
   ) {}
 
   ngOnInit(): void {}
 
   incrementBlogViews(blog: Blog) {
     let userId = this.userService.currentUser.id;
-    if (!this.blog.views?.includes(userId)) {
-      blog.views?.push(userId);
+    if (!this.blog.views?.includes(userId!)) {
+      blog.views?.push(userId!);
     }
     this.blogService.updateBlog(blog);
   }

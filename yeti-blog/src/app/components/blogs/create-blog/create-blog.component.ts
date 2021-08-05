@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { AngularFireStorage } from '@angular/fire/storage';
+//import { AngularFireStorage } from '@angular/fire/storage';
 import { interval, Subscription } from 'rxjs';
+import { AngularFireStorage } from 'angularfire2/storage'
 
 import { Router } from '@angular/router';
 import { BlogService } from 'src/app/core/services/blog/blog.service';
-
 import { ImgService } from 'src/app/core/services/img/img.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { ImgService } from 'src/app/core/services/img/img.service';
   templateUrl: './create-blog.component.html',
   styleUrls: ['./create-blog.component.css'],
 })
-export class CreateBlogComponent  {
+export class CreateBlogComponent {
   error: any;
   private subscriptions: Array<Subscription> = [];
 
@@ -30,7 +30,7 @@ export class CreateBlogComponent  {
     private storage: AngularFireStorage,
     private blogService: BlogService,
     private router: Router,
-    private ImgService: ImgService
+    private imageUploadService: ImgService
   ) {}
 
   public ngOnDestroy(): void {
@@ -45,7 +45,7 @@ export class CreateBlogComponent  {
       (this.blog.title != '' && this.blog.content != '') ||
       blogImg == undefined
     ) {
-      await this.ImgService.uploadImage(
+      await this.imageUploadService.uploadImage(
         this.blog.title,
         blogImg,
         'BlogImages'
@@ -58,7 +58,7 @@ export class CreateBlogComponent  {
             this.blog.tags = this.tags.replace(' ', '').split(',');
             this.blogService.addNewBlog(
               this.blog.title,
-              (this.blog.imgUrl = this.ImgService.fileLink),
+              (this.blog.imgUrl = this.imageUploadService.fileLink),
               this.blog.content,
               this.blog.tags
             );

@@ -3,8 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from 'src/app/core/guards/auth.guard';
 import { NotFoundComponent } from '../shared/not-found/not-found.component';
 import { BlogArticleComponent } from './blog-article/blog-article.component';
-import { CreateBlogComponent } from './create-blog/create-blog.component';
-import { TagsComponent } from './tags/tags.component';
+import { CreateBlogComponent } from "./create-blog/create-blog.component"
+import { TagsComponent } from "./tags/tags.component"
 import { BlogsComponent } from './blogs/blogs.component';
 
 const routes: Routes = [

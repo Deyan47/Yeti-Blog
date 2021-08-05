@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-
 import { Blog } from 'src/app/core/models/blog/blog';
 import { BlogService } from 'src/app/core/services/blog/blog.service';
-
 
 @Component({
   selector: 'app-tags',
   templateUrl: './tags.component.html',
-  styleUrls: ['./tags.component.css']
+  styleUrls: ['./tags.component.css'],
 })
 export class TagsComponent implements OnInit {
   blogs!: Blog[];
@@ -32,7 +30,7 @@ export class TagsComponent implements OnInit {
     this.tags = this.blogService.getAllTags();
   }
 
-  back() {
+  backToAll() {
     this.router.navigateByUrl('blogs/all');
   }
 }
