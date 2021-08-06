@@ -1,12 +1,13 @@
 <header>
     <nav>
-        <section class="logo-holder">
-            <img src="../../../../assets/site_logo.png" alt="">
+        <section class="logo-holder" routerLink="/">
+            <img src="../../../../assets/site_logo.png" alt="yeti-logo">
         </section>
         <ul>
             <li><a routerLink="/">Home</a></li>
             <li><a routerLink="/blogs/all">All Blogs</a></li>
             <li><a routerLink="/blogs/new">Write</a></li>
+            <li><a routerLink="/leaderboard">Leaderboard</a></li>
         </ul>
 
         <ul *ngIf="!this.isLogged">

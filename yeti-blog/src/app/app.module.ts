@@ -47,6 +47,7 @@ import { BlogArticleComponent } from './components/blogs/blog-article/blog-artic
 import { CreateBlogComponent } from './components/blogs/create-blog/create-blog.component';
 import { TagsComponent } from './components/blogs/tags/tags.component';
 import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
+import { LeaderboardComponent } from './components/user/leaderboard/leaderboard.component';
 
 
 @NgModule({
@@ -59,6 +60,7 @@ import { UserProfileComponent } from './components/user/user-profile/user-profil
     CreateBlogComponent,
     TagsComponent,
     UserProfileComponent,
+    LeaderboardComponent,
   ],
   imports: [
     BrowserModule,
