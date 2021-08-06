@@ -1,6 +1,6 @@
 .leaderboard-holder {
-  height: 84.9vh;
-  background-color: #ccc;
+  padding-bottom: 50px;
+  background-color: #fff;
 }
 
 h1 {
@@ -16,6 +16,7 @@ ul {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 0;
 }
 
 img {
