@@ -1,23 +1,24 @@
 <section class="login-section">
   <form method="post">
-    <h2>Login</h2>
-    <div class="illustration">
-      <i class="fas fa-user-lock"></i>
-    </div>
-    <div>
-      <input #email type="email" name="email" placeholder="Email" />
-    </div>
-    <div>
-      <input #password type="password" name="password" placeholder="Password" />
-    </div>
-    <div>
-      <button
-        class="login-btn"
-        (click)="onLogin(email.value, password.value)"
-        type="button"
-      >
-        Log In
-      </button>
-    </div>
+      <h2>Login</h2>
+      <div class="illustration">
+          <i class="fas fa-user-lock"></i>
+      </div>
+      <div>
+          <input #email type="email" name="email" placeholder="Email">
+      </div>
+      <div>
+          <input #password type="password" name="password" placeholder="Password">
+      </div>
+      <div>
+          <button class="login-btn" (click)="onLogin(email.value, password.value)" type="button">Log In</button>
+
+          <button type="button" class="google-login" (click)="googleAuth()">
+              <img src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png"
+                  alt="Google-Logo">
+              Sign in with Google
+          </button>
+          <p class="google-login-disclaimer">Works only for registered users</p>
+      </div>
   </form>
 </section>
