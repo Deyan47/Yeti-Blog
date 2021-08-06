@@ -26,7 +26,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 @Injectable()
 export class UserServiceService {
   public achievmentImgUrl: string =
-    'https://img.pixers.pics/pho_wat(s3:700/FO/43/95/47/18/700_FO43954718_9b0e8c7a523456b309618f7614ae3d51.jpg,700,700,cms:2018/10/5bd1b6b8d04b8_220x50-watermark.png,over,480,650,jpg)/posters-cute-blue-yeti.jpg.jpg';
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Star_full.svg/1200px-Star_full.svg.png';
 
   userInfo!: any;
   usersCollection!: AngularFirestoreCollection<User>;
@@ -49,16 +49,9 @@ export class UserServiceService {
       })
     );
   }
-  
 
   get isLogged(): boolean {
     return localStorage['user_data'] != undefined;
-  }
-  get isAdmin(): boolean {
-    if (this.isLogged) {
-      return JSON.parse(localStorage['user_data']).isAdmin != undefined;
-    }
-    return false;
   }
 
   login(email: string, password: string) {
@@ -68,8 +61,11 @@ export class UserServiceService {
         this.users.subscribe((users) => {
           let user = users.filter((x) => x.email === email)[0];
           this.addUserToLocalStorage(JSON.stringify(user));
-          this.router.navigateByUrl('/');
         });
+      })
+      .catch((err) => alert(err.message))
+      .finally(() => {
+        this.router.navigateByUrl('/');
       });
   }
 
@@ -89,7 +85,6 @@ export class UserServiceService {
           email: email,
           bio: bio,
           imgUrl: imgUrl,
-          
         };
 
         this.usersCollection.add(user);
@@ -104,17 +99,15 @@ export class UserServiceService {
       });
   }
 
- 
-
-  
-
   logout() {
     return this.fireAuth.auth
       .signOut()
+      .then((data) => {})
       .catch((err) => alert(err.message))
       .finally(() => {
         localStorage.removeItem('user_data');
         this.router.navigateByUrl('/');
+        window.location.reload();
       });
   }
 
@@ -122,7 +115,9 @@ export class UserServiceService {
     localStorage['user_data'] = userData;
   }
 
-  
+  get getUserPic(): string {
+    return this.currentUser.imgUrl;
+  }
 
   checkIfUserIsEligbleForAchievement(blogsWritten: number) {
     let achievments = Array<Achievment>();
@@ -160,17 +155,13 @@ export class UserServiceService {
     return achievments;
   }
 
-  updateUser(user: User) {
-    this.userDoc = this.afs.doc(`users/${user.id}`);
-    this.userDoc.update(user);
+  updateUser() {
+    this.userDoc = this.afs.doc(`users/${this.currentUser.id}`);
+    this.userDoc.update(this.currentUser);
   }
 
   get currentUser(): User {
     this.userInfo = JSON.parse(localStorage['user_data']);
     return this.userInfo as User;
-  }
-
-  getAllUsers() {
-    return this.users;
   }
 }
