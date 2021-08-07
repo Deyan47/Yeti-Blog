@@ -18,15 +18,10 @@ import {
   AngularFirestoreDocument,
 } from 'angularfire2/firestore';
 import { AngularFireModule } from 'angularfire2';
-
-
 import { auth } from 'firebase/app';
-
-
 //import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
-
 
 @Injectable()
 export class UserServiceService {
@@ -60,9 +55,11 @@ export class UserServiceService {
   get isLogged(): boolean {
     return localStorage['user_data'] != undefined;
   }
-  
   get isAdmin(): boolean {
-    return JSON.parse(localStorage['user_data']).isAdmin != undefined;
+    if (this.isLogged) {
+      return JSON.parse(localStorage['user_data']).isAdmin != undefined;
+    }
+    return false;
   }
 
   login(email: string, password: string) {

@@ -54,6 +54,9 @@ import { AdminUsersComponent } from './components/admin/admin-users/admin-users.
 import { AdminRoutingModule } from "./components/admin/admin-routing.module";
 import { ShareModule } from "ngx-sharebuttons";
 import { AdminModule } from "./components/admin/admin.module";
+import { ChatComponent } from './components/chat/chat.component';
+import { ChatService } from './core/services/chat/chat.service';
+
 
 
 @NgModule({
@@ -67,6 +70,7 @@ import { AdminModule } from "./components/admin/admin.module";
     TagsComponent,
     UserProfileComponent,
     LeaderboardComponent,
+    ChatComponent,
   ],
   imports: [
     BrowserModule,
@@ -92,7 +96,11 @@ import { AdminModule } from "./components/admin/admin.module";
     AuthGuard,
     UserServiceService,
     ImgService,
+    ChatService,
     AngularFireAuthModule,
+    AngularFireAuthModule,
+    AngularFirestore,
+    AngularFireStorageModule,
   ],
   bootstrap: [AppComponent],
 })

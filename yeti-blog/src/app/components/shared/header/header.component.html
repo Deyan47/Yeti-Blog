@@ -1,12 +1,13 @@
 <header>
     <nav>
         <section class="logo-holder">
-            <img src="../../../../assets/site_logo.png" alt="yeti-logo" routerLink="/">
+            <img src="../../../../assets/site_logo.png" alt="" routerLink="/">
         </section>
         <ul>
             <li><a routerLink="/">Home</a></li>
             <li><a routerLink="/blogs/all">All Blogs</a></li>
-            <li><a routerLink="/blogs/new">Write</a></li>
+            <li><a *ngIf="isLogged" routerLink="/blogs/new">Write</a></li>
+            <li><a *ngIf="isLogged" routerLink="/chat">Chat</a></li>
             <li><a routerLink="/leaderboard">Leaderboard</a></li>
             <span class="admin-holder">
                 <li *ngIf="isAdmin"><a (click)="toggleAdminDropdown()">Administration</a>
@@ -16,9 +17,6 @@
                     <a routerLink="/admin/users">Users</a>
                 </div>
             </span>
-
-
-
         </ul>
 
         <ul *ngIf="!this.isLogged">
