@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { interval, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Blog } from '../../models/blog/blog';
@@ -26,6 +26,7 @@ import { auth } from 'firebase/app';
 //import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+
 
 @Injectable()
 export class UserServiceService {
@@ -59,6 +60,12 @@ export class UserServiceService {
   get isLogged(): boolean {
     return localStorage['user_data'] != undefined;
   }
+  get isAdmin(): boolean {
+    if (this.isLogged) {
+      return JSON.parse(localStorage['user_data']).isAdmin != undefined;
+    }
+    return false;
+  }
 
   login(email: string, password: string) {
     return this.fireAuth.auth
@@ -68,10 +75,8 @@ export class UserServiceService {
           let user = users.filter((x) => x.email === email)[0];
           this.addUserToLocalStorage(JSON.stringify(user));
           this.router.navigateByUrl('/');
-          window.location.reload();
         });
-      })
-      .catch((err) => alert(err.message));
+      });
   }
 
   register(
@@ -151,6 +156,7 @@ export class UserServiceService {
         firebaseId: dataFromGoogle[0].uid,
         imgUrl: this.userFromGoogleLogin.imgUrl,
         username: this.userFromGoogleLogin.username,
+        isAdmin: this.userFromGoogleLogin.isAdmin,
       });
     }
   }

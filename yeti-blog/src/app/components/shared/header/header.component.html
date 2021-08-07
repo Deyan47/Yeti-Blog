@@ -1,13 +1,24 @@
 <header>
     <nav>
-        <section class="logo-holder" routerLink="/">
-            <img src="../../../../assets/site_logo.png" alt="yeti-logo">
+        <section class="logo-holder">
+            <img src="../../../../assets/site_logo.png" alt="yeti-logo" routerLink="/">
         </section>
         <ul>
             <li><a routerLink="/">Home</a></li>
             <li><a routerLink="/blogs/all">All Blogs</a></li>
             <li><a routerLink="/blogs/new">Write</a></li>
             <li><a routerLink="/leaderboard">Leaderboard</a></li>
+            <span class="admin-holder">
+                <li *ngIf="isAdmin"><a (click)="toggleAdminDropdown()">Administration</a>
+                </li>
+                <div (click)="toggleAdminDropdown()" *ngIf="isAdminDropdownShown" class="dropdown-content">
+                    <a routerLink="/admin/blogs">Blogs</a>
+                    <a routerLink="/admin/users">Users</a>
+                </div>
+            </span>
+
+
+
         </ul>
 
         <ul *ngIf="!this.isLogged">

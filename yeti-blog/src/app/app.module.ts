@@ -49,6 +49,12 @@ import { TagsComponent } from './components/blogs/tags/tags.component';
 import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
 import { LeaderboardComponent } from './components/user/leaderboard/leaderboard.component';
 
+import { AdminBlogsComponent } from './components/admin/admin-blogs/admin-blogs.component';
+import { AdminUsersComponent } from './components/admin/admin-users/admin-users.component';
+import { AdminRoutingModule } from "./components/admin/admin-routing.module";
+import { ShareModule } from "ngx-sharebuttons";
+import { AdminModule } from "./components/admin/admin.module";
+
 
 @NgModule({
   declarations: [
@@ -66,8 +72,10 @@ import { LeaderboardComponent } from './components/user/leaderboard/leaderboard.
     BrowserModule,
     AppRoutingModule,
     AuthRoutingModule,
+    AdminRoutingModule,
     BlogsRoutingModule,
     SharedModule,
+    AdminModule,
     BrowserAnimationsModule,
     CKEditorModule,
     FormsModule,
@@ -77,15 +85,14 @@ import { LeaderboardComponent } from './components/user/leaderboard/leaderboard.
     AngularFireStorageModule,
     MatChipsModule,
     MatProgressSpinnerModule,
+    ShareModule,
   ],
   providers: [
-    UserServiceService,
     BlogService,
     AuthGuard,
+    UserServiceService,
     ImgService,
     AngularFireAuthModule,
-    AngularFirestore,
-    AngularFireStorageModule
   ],
   bootstrap: [AppComponent],
 })
