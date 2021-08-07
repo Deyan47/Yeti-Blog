@@ -60,11 +60,9 @@ export class UserServiceService {
   get isLogged(): boolean {
     return localStorage['user_data'] != undefined;
   }
+  
   get isAdmin(): boolean {
-    if (this.isLogged) {
-      return JSON.parse(localStorage['user_data']).isAdmin != undefined;
-    }
-    return false;
+    return JSON.parse(localStorage['user_data']).isAdmin != undefined;
   }
 
   login(email: string, password: string) {
@@ -75,6 +73,7 @@ export class UserServiceService {
           let user = users.filter((x) => x.email === email)[0];
           this.addUserToLocalStorage(JSON.stringify(user));
           this.router.navigateByUrl('/');
+          window.location.reload();
         });
       });
   }
