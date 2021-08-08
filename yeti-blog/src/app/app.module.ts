@@ -49,13 +49,12 @@ import { TagsComponent } from './components/blogs/tags/tags.component';
 import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
 import { LeaderboardComponent } from './components/user/leaderboard/leaderboard.component';
 
-import { AdminBlogsComponent } from './components/admin/admin-blogs/admin-blogs.component';
-import { AdminUsersComponent } from './components/admin/admin-users/admin-users.component';
 import { AdminRoutingModule } from "./components/admin/admin-routing.module";
 import { ShareModule } from "ngx-sharebuttons";
 import { AdminModule } from "./components/admin/admin.module";
 import { ChatComponent } from './components/chat/chat.component';
 import { ChatService } from './core/services/chat/chat.service';
+import { AuthModule } from './components/auth/auth.module';
 
 
 
@@ -75,6 +74,7 @@ import { ChatService } from './core/services/chat/chat.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AuthModule,
     AuthRoutingModule,
     AdminRoutingModule,
     BlogsRoutingModule,

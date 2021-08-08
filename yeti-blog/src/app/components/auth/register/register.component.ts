@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { interval, Subscription } from 'rxjs';
 import { UserServiceService } from 'src/app/core/services/user/user-service.service';
-import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 import { ImgService } from 'src/app/core/services/img/img.service';
 @Component({
   selector: 'app-register',
@@ -12,7 +12,7 @@ export class RegisterComponent implements OnInit {
   private subscriptions: Array<Subscription> = [];
   constructor(
     private imageUploadService: ImgService,
-    private userService: UserServiceService,
+    private userService: UserServiceService
   ) {}
 
   ngOnInit(): void {}
@@ -26,16 +26,23 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  onRegister(
-    username: string,
-    email: string,
-    password: string,
-    confirmPassword: string,
-    bio: string,
-    profilePic: HTMLInputElement
-  ) {
+  onRegister(formData: NgForm, profilePic: HTMLInputElement) {
     this.formDisplay = false;
     this.loaderDisplay = true;
+
+    const data = Object.values(formData);
+    const username = data[0];
+    const email = data[1];
+    const password = data[2];
+    const bio = data[4];
+
+    if (!profilePic.value) {
+      alert('Profile picture is required!');
+      this.formDisplay = true;
+      this.loaderDisplay = false;
+      return;
+    }
+
     this.imageUploadService.uploadImage(username, profilePic, 'ProfileImages');
 
     this.subscriptions.push(
@@ -50,7 +57,7 @@ export class RegisterComponent implements OnInit {
               bio,
               this.imageUploadService.fileLink
             )
-            .catch((err:any) => {
+            .catch((err) => {
               alert(err.message);
               this.loaderDisplay = false;
               this.formDisplay = true;

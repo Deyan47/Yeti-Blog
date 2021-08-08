@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/core/models/user/user';
-import { UserServiceService } from '../../../core/services/user/user-service.service';
+import {  UserServiceService } from '../../../core/services/user/user-service.service';
 
 @Component({
   selector: 'app-header',
@@ -9,13 +9,15 @@ import { UserServiceService } from '../../../core/services/user/user-service.ser
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  public isLogged: boolean = false;
   public isAdmin: boolean = false;
   public isAdminDropdownShown: boolean = false;
   public user!: User;
 
+  get isLogged(): boolean {
+    return this.userService.isLogged;
+  }
+
   constructor(private userService: UserServiceService, private router: Router) {
-    this.isLogged = this.userService.isLogged;
     this.isAdmin = this.userService.isAdmin;
 
     if (this.isLogged) {
@@ -28,7 +30,6 @@ export class HeaderComponent implements OnInit {
   logout() {
     this.userService.logout();
     this.router.navigateByUrl('/');
-    window.location.reload();
   }
 
   toggleAdminDropdown() {
