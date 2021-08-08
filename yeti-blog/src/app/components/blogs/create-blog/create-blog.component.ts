@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
-//import { AngularFireStorage } from '@angular/fire/storage';
-import { interval, Subscription } from 'rxjs';
-import { AngularFireStorage } from 'angularfire2/storage'
-
 import { Router } from '@angular/router';
+import { interval, Subscription } from 'rxjs';
+
 import { BlogService } from 'src/app/core/services/blog/blog.service';
 import { ImgService } from 'src/app/core/services/img/img.service';
 
@@ -27,7 +25,6 @@ export class CreateBlogComponent {
   tags: string = '';
 
   constructor(
-    private storage: AngularFireStorage,
     private blogService: BlogService,
     private router: Router,
     private imageUploadService: ImgService

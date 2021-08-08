@@ -1,15 +1,16 @@
 <section class="chat-holder">
     <section *ngIf="isLogged" class="chat">
         <app-alert [alert]="error" *ngIf="error"></app-alert>
-        <h1>Welcome to the public discussion chat!</h1>
+        <h1>Welcome to our chat page</h1>
 
-        <form (ngSubmit)="postHandler()">
+        <form #form='ngForm' (ngSubmit)="postHandler()">
             <article class="send">
-                <textarea rows="3" cols="40" type="text" placeholder="Ask something, you always wanted to"
-                    name="message" [(ngModel)]="this.messageContent"></textarea>
+                <textarea rows="3" cols="40" type="text" placeholder="Share your thoughts..."
+                    name="message" [(ngModel)]="this.messageContent" #message='ngModel' required ngModel></textarea>
+
                 </article>
                 <button type="submit" class="btn btn-success">Post message</button>
-                
+
             <ul>
                 <li *ngFor="let message of this.messages" routerLink="/user/{{message.user.id}}">
                     <section class="img-holder">
