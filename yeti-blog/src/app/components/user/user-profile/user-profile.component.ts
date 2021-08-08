@@ -24,18 +24,17 @@ export class UserProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe((routeParams) => {
-      this.userId = Object.values(routeParams)[0];
-      this.blogService.getAllBlogs().subscribe((blogs) => {
-        this.blogs = blogs.filter((x) => x.user.id == this.userId);
-        this.achievements = this.userService.checkIfUserIsEligbleForAchievement(
-          this.blogs.length
-        );
-      });
-    });
-
-    this.userService.getAllUsers().subscribe((users) => {
-      this.user = users.filter((x) => x.id == this.userId)[0];
-    });
+  //  this.route.params.subscribe((routeParams) => {
+  //    this.userId = Object.values(routeParams)[0];
+  //    this.blogService.getAllBlogs().subscribe((blogs) => {
+  //      this.blogs = blogs.filter((x) => x.user.id == this.userId);
+  //      this.achievements = this.userService.checkIfUserIsEligbleForAchievement(
+  //        this.blogs.length
+  //      );
+  //    });
+  //  });
+  //  this.userService.getAllUsers().subscribe((users) => {
+  //    this.user = users.filter((x) => x.id == this.userId)[0];
+  //  });
   }
 }

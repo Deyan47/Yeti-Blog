@@ -10,8 +10,8 @@
 }
 
 .register-section {
-  height: 87vh;
-  background: #2980ef;
+  height: 90vh;
+  background: #475d62 url("../assets/bg.jpg");
   background-size: cover;
   position: relative;
 }
@@ -33,7 +33,6 @@
   left: 50%;
   color: #fff;
   box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.2);
-  height: 90vh;
 }
 
 .register-section .illustration {

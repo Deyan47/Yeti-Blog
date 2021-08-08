@@ -5,11 +5,11 @@
 
         <form (ngSubmit)="postHandler()">
             <article class="send">
-                <textarea rows="3" cols="40" type="text" placeholder="Do you think robots wil take over the world?"
+                <textarea rows="3" cols="40" type="text" placeholder="Ask something, you always wanted to"
                     name="message" [(ngModel)]="this.messageContent"></textarea>
+                </article>
                 <button type="submit" class="btn btn-success">Post message</button>
-            </article>
-
+                
             <ul>
                 <li *ngFor="let message of this.messages" routerLink="/user/{{message.user.id}}">
                     <section class="img-holder">

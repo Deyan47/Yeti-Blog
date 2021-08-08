@@ -1,15 +1,12 @@
 import { Injectable } from '@angular/core';
 import { ChatMessage } from '../../models/chat/chat';
-import { User } from '../../models/user/user';
-//import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { auth } from 'firebase/app';
 import { Router } from '@angular/router';
 import {
   AngularFirestore,
   AngularFirestoreCollection,
   AngularFirestoreDocument,
-} from 'angularfire2/firestore';
+} from 'angularfire2/firestore'
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { UserServiceService } from '../user/user-service.service';
@@ -45,6 +42,11 @@ export class ChatService {
         });
       })
     );
+  }
+
+  deleteMessage(message: ChatMessage) {
+    this.chatMessageDoc = this.afs.doc(`chat-messages/${message.id}`);
+    this.chatMessageDoc.delete();
   }
 
   postMessage(content: string) {

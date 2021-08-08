@@ -20,8 +20,10 @@
 }
 
 .login-section {
-  height: 87vh;
-  background: #2980ef;
+  height: 90vh;
+  min-height: 100%;
+  background: #475d62 url("../assets/bg.jpg");
+  background-size: cover;
   position: relative;
 }
 .login-section h2 {

@@ -1,6 +1,6 @@
 .leaderboard-holder {
   padding-bottom: 50px;
-  background-color: #fff;
+  background-color: #ccc;
 }
 
 h1 {
@@ -75,4 +75,8 @@ li:nth-child(3) .place {
 }
 li h2 {
   flex-basis: 20%;
+}
+
+.not-logged {
+  color: red;
 }

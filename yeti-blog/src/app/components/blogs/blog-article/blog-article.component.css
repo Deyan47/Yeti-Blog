@@ -75,8 +75,11 @@ h1 {
   margin-bottom: 20px;
 }
 .blog-content-holder {
-  width: 70%;
+  width: 60%;
+  border-bottom: 1px solid rgb(4, 2, 117);
+  margin-bottom: 10px;
 }
+
 .popularity-markers i {
   font-weight: 200;
   font-size: 18px;
@@ -96,10 +99,7 @@ h1 {
   width: 100%;
   box-shadow: 6px 7px 26px -4px rgba(46, 34, 34, 0.94);
 }
-.blog-content-holder {
-  border-bottom: 1px solid gray;
-  margin-bottom: 10px;
-}
+
 .author {
   /* align-self: flex-start; */
   text-decoration: none;
@@ -175,15 +175,15 @@ li span {
   background-color: white;
 }
 .edit-btn {
-  color: #024094;
-  background-color: #f47d05;
+  color: #fff;
+  background-color: #024094;
   border: 1px solid #024094;
   padding: 5px 10px;
 }
 .cancel-btn {
-  color: #f47d05;
+  color: #fff;
   background-color: #024094;
-  border: 1px solid #f47d05;
+  background-color: #024094;
   padding: 5px 10px;
   margin-left: 10px;
 }
@@ -208,41 +208,7 @@ li span {
   margin-left: 10px;
   font-style: normal;
 }
-.share-buttons-holder {
-  margin-bottom: 10px;
-}
 
-.share-buttons-holder button {
-  box-shadow: 6px 7px 26px -4px rgba(46, 34, 34, 0.94);
-  cursor: pointer;
-  outline: none;
-  border: none;
-  margin: 10px;
-  padding: 5px 25px;
-  font-size: 20px;
-  color: white;
-}
-.facebook {
-  background-color: #4267b2;
-}
-.pinterest {
-  background-color: #bd091d;
-}
-.twitter {
-  background-color: #00acee;
-}
-.linkedin {
-  background-color: #006fa6;
-}
-.tumblr {
-  background-color: #36465d;
-}
-.reddit {
-  background: #ff4006;
-}
-.copy-to-clipboard {
-  background-color: #607d8b;
-}
 .isClicked {
   background-color: #00b900;
 }
