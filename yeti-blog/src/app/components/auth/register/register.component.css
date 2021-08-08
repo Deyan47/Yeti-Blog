@@ -11,8 +11,7 @@
 
 .register-section {
   height: 90vh;
-  background: #475d62 url("../assets/bg.jpg");
-  background-size: cover;
+  background: white;
   position: relative;
 }
 .register-section h2 {

@@ -1,6 +1,6 @@
 .leaderboard-holder {
   padding-bottom: 50px;
-  background-color: #ccc;
+  background-color: #fff;
 }
 
 h1 {
@@ -34,7 +34,6 @@ img {
   flex-basis: 25%;
 }
 li {
-  box-shadow: 6px 7px 26px -4px rgba(46, 34, 34, 0.94);
   border-radius: 6px;
   padding: 10px 20px;
   width: 60%;
@@ -54,10 +53,10 @@ li:nth-child(1) .place {
   color: gold;
 }
 li:nth-child(2) {
-  border: 2px solid rgb(110, 108, 108);
+  border: 2px solid rgb(145, 140, 140);
 }
 li:nth-child(2) .place {
-  color: rgb(110, 108, 108);
+  color: rgb(145, 140, 140);
 }
 li:nth-child(3) {
   border: 2px solid #a56136;
