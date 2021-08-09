@@ -3,6 +3,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule } from "@angular/forms";
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
@@ -32,6 +33,7 @@ import { BlogService } from './core/services/blog/blog.service';
 import { UserServiceService } from './core/services/user/user-service.service';
 import { ImgService } from './core/services/img/img.service';
 import { ChatService } from './core/services/chat/chat.service';
+import { LogsService } from './core/services/logs/logs.service';
 
 import { AppComponent } from './app.component';
 import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
@@ -49,6 +51,7 @@ import { HomeComponent } from './components/home/home.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     MatProgressSpinnerModule,
@@ -71,6 +74,7 @@ import { HomeComponent } from './components/home/home.component';
     AuthGuard,
     UserServiceService,
     ImgService,
+    LogsService,
     ChatService,
     AngularFireAuthModule,
     AngularFirestore,
