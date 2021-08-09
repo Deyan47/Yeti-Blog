@@ -174,7 +174,7 @@ export class UserServiceService {
     }
 
     addProfileVisitation(user: User) {
-      if (this.currentUser.id != user.id) {
+      if (this.isLogged && this.currentUser.id != user.id) {
         let visitation: Visitation = {
           visitedOn: new Date().toLocaleString(),
           visitedBy: this.currentUser,
