@@ -279,3 +279,7 @@ li span {
 .row-buttons {
   display: flex;
 }
+.spinner {
+  margin: 0 auto;
+  margin-top: 20px;
+}
