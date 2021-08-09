@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BlogService } from '../../../core/services/blog/blog.service';
-import { Blog } from '../../../core/models/blog/blog';
 import { Router } from '@angular/router';
 import { interval } from 'rxjs';
+
+import { BlogService } from '../../../core/services/blog/blog.service';
+import { Blog } from '../../../core/models/blog/blog';
 import { UserServiceService } from 'src/app/core/services/user/user-service.service';
 
 @Component({
@@ -24,6 +25,7 @@ export class BlogArticleComponent implements OnInit {
   commentToAdd!: string;
 
   blog!: Blog;
+  relevantBlog!: Blog[];
   id: string | null = '';
 
   constructor(
@@ -34,16 +36,28 @@ export class BlogArticleComponent implements OnInit {
   ) {}
 
   get isFrozen(): boolean {
-    return this.userService.currentUser.isFrozen!;
+    if (this.isLogged) {
+      return this.userService.currentUser.isFrozen!;
+    }
+    return false;
   }
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.paramMap.get('id') as string;
-    this.blogService.getAllBlogs().subscribe((blogs) => {
-      this.blog = blogs.filter((x) => x.id === this.id)[0];
-      this.blog.comments?.sort((a, b) =>
-        b.createdOn.localeCompare(a.createdOn)
-      );
+    this.route.params.subscribe((params) => {
+      this.id = params['id'];
+      this.blogService.getAllBlogs().subscribe((blogs) => {
+        this.blog = blogs.filter((x) => x.id === this.id)[0];
+        this.blog.comments?.sort((a, b) =>
+          b.createdOn.localeCompare(a.createdOn)
+        );
+        this.relevantBlog = blogs
+          .filter(
+            (blog) =>
+              blog.tags?.some((tag) => this.blog.tags?.includes(tag)) &&
+              blog.id != this.id
+          )
+          .slice(0, 2);
+      });
     });
   }
 
