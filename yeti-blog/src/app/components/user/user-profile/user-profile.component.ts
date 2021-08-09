@@ -7,6 +7,7 @@ import { User } from 'src/app/core/models/user/user';
 import { BlogService } from 'src/app/core/services/blog/blog.service';
 import { UserServiceService } from 'src/app/core/services/user/user-service.service';
 import { LogsService } from 'src/app/core/services/logs/logs.service';
+import { AchievementService } from 'src/app/core/services/achievement/achievement.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -17,7 +18,7 @@ export class UserProfileComponent implements OnInit {
   blogs!: Blog[];
   userId!: string;
   user!: User;
-  achievements!: Achievment[];
+  //achievements!: Achievment[];
   areVisitationsVisitble: boolean = false;
 
   get isUserOwnerOfProfile(): boolean {
@@ -31,7 +32,8 @@ export class UserProfileComponent implements OnInit {
     private blogService: BlogService,
     private route: ActivatedRoute,
     private userService: UserServiceService,
-    private logsService: LogsService
+    private logsService: LogsService,
+    private achievementService: AchievementService
   ) {
     this.logsService.addRecord('user-profile');
   }
@@ -41,11 +43,19 @@ export class UserProfileComponent implements OnInit {
     this.route.params.subscribe((routeParams) => {
       this.userId = Object.values(routeParams)[0];
 
+      this.achievementService.checkIfUserIsEligbleForBlogAchievements(
+        this.userId
+      );
+      this.achievementService.checkIfUserIsEligbleForChatAchievements(
+        this.userId
+      );
+
+      this.achievementService.checkIfUserIsEligbleForCommenterAchievements(
+        this.userId
+      );
+
       this.blogService.getAllBlogs().subscribe((blogs) => {
         this.blogs = blogs.filter((x) => x.user.id == this.userId);
-        //this.achievements = this.userService.checkIfUserIsEligbleForAchievement(
-        //  this.blogs.length
-        //);
       });
       this.userService.getAllUsers().subscribe((users) => {
         this.user = users.filter((x) => x.id == this.userId)[0];
@@ -58,7 +68,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   get isFrozen(): boolean {
-    return this.userService.currentUser.isFrozen!;
+    return this.user.isFrozen!;
   }
 
   toggleUserVisitations() {

@@ -16,8 +16,6 @@ import {
 
 @Injectable()
 export class UserServiceService {
-  public achievmentImgUrl: string =
-    'https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Star_full.svg/1200px-Star_full.svg.png';
 
     private userFromGoogleLogin: any;
 

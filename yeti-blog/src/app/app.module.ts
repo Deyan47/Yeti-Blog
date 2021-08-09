@@ -29,6 +29,7 @@ import { AdminModule } from './components/admin/admin.module';
 import { BlogsModule } from './components/blogs/blogs.module';
 import { SharedModule } from './components/shared/shared.module';
 
+import { AchievementService } from './core/services/achievement/achievement.service';
 import { BlogService } from './core/services/blog/blog.service';
 import { UserServiceService } from './core/services/user/user-service.service';
 import { ImgService } from './core/services/img/img.service';
@@ -70,6 +71,7 @@ import { HomeComponent } from './components/home/home.component';
     AngularFireStorageModule,
   ],
   providers: [
+    AchievementService,
     BlogService,
     AuthGuard,
     UserServiceService,

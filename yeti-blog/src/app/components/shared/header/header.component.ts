@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/core/models/user/user';
 import { UserServiceService } from '../../../core/services/user/user-service.service';
+import { AchievementService } from 'src/app/core/services/achievement/achievement.service';
 
 @Component({
   selector: 'app-header',
@@ -23,7 +24,11 @@ export class HeaderComponent implements OnInit {
     return this.userService.currentUser;
   }
 
-  constructor(private userService: UserServiceService, private router: Router) {}
+  constructor(
+    private userService: UserServiceService,
+    private router: Router,
+    private achievementService: AchievementService,
+  ) {}
 
   ngOnInit() {}
 

@@ -1,4 +1,5 @@
 import { Visitation } from './visitation';
+import { Achievment } from './achievment';
 
 export interface User {
   id?: string;
@@ -10,4 +11,5 @@ export interface User {
   isAdmin?: boolean;
   isFrozen?: boolean;
   visitations?: Visitation[];
+  achievements?: Achievment[];
 }
