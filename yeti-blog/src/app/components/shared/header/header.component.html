@@ -9,6 +9,7 @@
             <li><a *ngIf="isLogged" routerLink="/blogs/new">Write</a></li>
             <li><a *ngIf="isLogged" routerLink="/chat">Chat</a></li>
             <li><a *ngIf="isLogged" routerLink="/leaderboard">Leaderboard</a></li>
+            <li><a routerLink="/blogs/saved">Bookmarks</a></li>
             <span class="admin-holder">
                 <li *ngIf="isAdmin"><a (click)="toggleAdminDropdown()">Administration</a>
                 </li>

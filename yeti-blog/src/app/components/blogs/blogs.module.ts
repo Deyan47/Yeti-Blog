@@ -11,6 +11,8 @@ import { MatChipsModule } from '@angular/material/chips';
 import { CKEditorModule } from 'ng2-ckeditor';
 import { TagsComponent } from './tags/tags.component';
 import { CreateBlogComponent } from './create-blog/create-blog.component';
+import { BlogsSavedComponent } from './blogs-saved/blogs-saved.component';
+
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import { CreateBlogComponent } from './create-blog/create-blog.component';
     CreateBlogComponent,
     BlogsComponent,
     TagsComponent,
+    BlogsSavedComponent,
   ],
   imports: [
     CommonModule,

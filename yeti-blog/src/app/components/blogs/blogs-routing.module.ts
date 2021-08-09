@@ -6,6 +6,7 @@ import { BlogArticleComponent } from './blog-article/blog-article.component';
 import { CreateBlogComponent } from "./create-blog/create-blog.component"
 import { TagsComponent } from "./tags/tags.component"
 import { BlogsComponent } from './blogs/blogs.component';
+import { BlogsSavedComponent } from './blogs-saved/blogs-saved.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,11 @@ const routes: Routes = [
       {
         path: 'new',
         component: CreateBlogComponent,
+        data: { isLogged: true },
+      },
+      {
+        path: 'saved',
+        component: BlogsSavedComponent,
         data: { isLogged: true },
       },
       { path: '**', pathMatch: 'full', redirectTo: '404-not-found' },

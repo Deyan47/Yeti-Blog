@@ -60,3 +60,11 @@ p {
 button {
   width: fit-content;
 }
+.remove-from-bookmarks {
+  text-align: left;
+  text-decoration: none;
+  font-size: 20px;
+  position: absolute;
+  bottom: 10px;
+  left: 0px;
+}

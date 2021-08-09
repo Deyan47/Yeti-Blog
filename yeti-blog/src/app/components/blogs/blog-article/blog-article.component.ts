@@ -28,6 +28,8 @@ export class BlogArticleComponent implements OnInit {
   relevantBlog!: Blog[];
   id: string | null = '';
 
+  url: string = `https://easy-blog-angular.github.io/blogs/blog/${this.id}`;
+
   constructor(
     private route: ActivatedRoute,
     private blogService: BlogService,
@@ -95,14 +97,25 @@ export class BlogArticleComponent implements OnInit {
 
   likeBlog(blog: Blog) {
     let userId = this.userService.currentUser.id;
-    if (!this.blog.likes?.includes(userId!)) {
-      blog.likes?.push(userId!);
-      this.updateBlog(blog);
-      this.addAlert('Success', 'Comment liked succesfully!', 'success');
+    if (this.blogService.likeBlog(blog, userId!)) {
+      this.addAlert('Success', 'Blog liked succesfully!', 'success');
     } else {
       this.addAlert(
         'Error',
         'You cannot like the blog more than once!',
+        'danger'
+      );
+    }
+  }
+
+  bookmarkBlog(blog: Blog) {
+    let userId = this.userService.currentUser.id;
+    if (this.blogService.bookmarkBlog(blog, userId!)) {
+      this.addAlert('Success', 'Blog saved successfully!', 'success');
+    } else {
+      this.addAlert(
+        'Error',
+        'You save like the blog more than once!',
         'danger'
       );
     }
@@ -121,6 +134,11 @@ export class BlogArticleComponent implements OnInit {
       this.addAlert('Error', 'Comment cannot be empty!', 'danger');
     }
     this.clearState();
+  }
+
+  copyToClipboard() {
+    this.isClicked = true;
+    navigator.clipboard.writeText(window.location.href);
   }
 
   clearState() {
