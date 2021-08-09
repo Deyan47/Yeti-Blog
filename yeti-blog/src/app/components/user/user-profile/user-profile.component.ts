@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+
 import { Blog } from 'src/app/core/models/blog/blog';
 import { Achievment } from 'src/app/core/models/user/achievment';
 import { User } from 'src/app/core/models/user/user';
@@ -51,7 +52,6 @@ export class UserProfileComponent implements OnInit {
     });
   }
   toggleUserVisitations() {
-    console.log(this.user);
     this.areVisitationsVisitble = !this.areVisitationsVisitble;
   }
   ngOnDestroy() {

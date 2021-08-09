@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { interval } from 'rxjs';
+
 import { ChatMessage } from 'src/app/core/models/chat/chat';
 import { ChatService } from 'src/app/core/services/chat/chat.service';
 import { UserServiceService } from 'src/app/core/services/user/user-service.service';
