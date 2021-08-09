@@ -4,6 +4,7 @@ import { interval, Subscription } from 'rxjs';
 
 import { BlogService } from 'src/app/core/services/blog/blog.service';
 import { ImgService } from 'src/app/core/services/img/img.service';
+import { UserServiceService } from 'src/app/core/services/user/user-service.service';
 
 @Component({
   selector: 'app-create-blog',
@@ -27,13 +28,18 @@ export class CreateBlogComponent {
   constructor(
     private blogService: BlogService,
     private router: Router,
-    private imageUploadService: ImgService
+    private imageUploadService: ImgService,
+    private userService: UserServiceService
   ) {}
 
   public ngOnDestroy(): void {
     this.subscriptions.forEach((subscription: Subscription) => {
       subscription.unsubscribe();
     });
+  }
+
+  get isFrozen(): boolean {
+    return this.userService.currentUser.isFrozen!;
   }
 
   async onSubmit(blogImg: HTMLInputElement) {

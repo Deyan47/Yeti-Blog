@@ -84,3 +84,9 @@ hr {
 .user-profile {
   min-height: 85vh;
 }
+.frozen {
+  color: red;
+}
+.isFrozen {
+  margin-left: 20px;
+}

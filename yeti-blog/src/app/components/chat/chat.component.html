@@ -1,11 +1,11 @@
 <section class="chat-holder">
     <section *ngIf="isLogged" class="chat">
         <app-alert [alert]="error" *ngIf="error"></app-alert>
-        <h1>Welcome to our chat page</h1>
+        <h1>Welcome to the chat</h1>
 
-        <form #form='ngForm' (ngSubmit)="postHandler()">
+        <form #form='ngForm' *ngIf="!isFrozen" (ngSubmit)="postHandler()">
             <article class="send">
-                <textarea rows="3" cols="40" type="text" placeholder="Share your thoughts..."
+                <textarea rows="3" cols="40" type="text" placeholder="Share us your thoughts..."
                     name="message" [(ngModel)]="this.messageContent" #message='ngModel' required ngModel></textarea>
 
                 </article>
@@ -22,6 +22,10 @@
                 </li>
             </ul>
         </form>
+
+        <section class="frozen" *ngIf="isFrozen">
+            <p>You have been frozen by the administrator and therefore cannot access the chat!</p>
+        </section>
     </section>
 
     <section class="not-logged" *ngIf="!isLogged">

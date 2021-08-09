@@ -208,7 +208,12 @@ li span {
   margin-left: 10px;
   font-style: normal;
 }
-
 .isClicked {
   background-color: #00b900;
+}
+.frozen {
+  text-align: center;
+  color: red;
+  font-weight: 400;
+  font-size: 19px;
 }

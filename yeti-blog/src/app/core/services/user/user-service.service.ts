@@ -161,4 +161,14 @@ export class UserServiceService {
     getAllUsers() {
       return this.users;
     }
+
+    freezeUser(user: User) {
+      user.isFrozen = true;
+      this.updateUser(user);
+    }
+    unFreezeUser(user: User) {
+      user.isFrozen = false;
+      this.updateUser(user);
+    }
+
   }
