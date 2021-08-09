@@ -1,12 +1,13 @@
 <section class="chat-holder">
     <section *ngIf="isLogged" class="chat">
         <app-alert [alert]="error" *ngIf="error"></app-alert>
-        <h1>Welcome to the chat</h1>
+        <h1>Welcome to the public discussion chat!</h1>
 
-        <form #form='ngForm' *ngIf="!isFrozen" (ngSubmit)="postHandler()">
+        <form #form='ngForm' *ngIf="!isFrozen" (ngSubmit)="postHandler(form)">
             <article class="send">
-                <textarea rows="3" cols="40" type="text" placeholder="Share us your thoughts..."
-                    name="message" [(ngModel)]="this.messageContent" #message='ngModel' required ngModel></textarea>
+                <textarea rows="3" (keyup.enter)="postHandler(form)" cols="40" type="text"
+                    placeholder="Share us your thoughts... :)" name="message" autocomplete="off"
+                    #message='ngModel' required ngModel></textarea>
 
                 </article>
                 <button type="submit" class="btn btn-success">Post message</button>

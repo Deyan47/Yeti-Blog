@@ -123,11 +123,6 @@ export class BlogArticleComponent implements OnInit {
     this.clearState();
   }
 
-  copyToClipboard() {
-    this.isClicked = true;
-    navigator.clipboard.writeText(window.location.href);
-  }
-
   clearState() {
     this.editState = false;
     this.commentingState = false;

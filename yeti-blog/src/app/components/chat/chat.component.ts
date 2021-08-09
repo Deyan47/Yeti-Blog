@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { interval } from 'rxjs';
 
 import { ChatMessage } from 'src/app/core/models/chat/chat';
@@ -41,13 +42,15 @@ export class ChatComponent {
     return e.setDate(e.getDate() - 1);
   }
 
-  postHandler() {
-    if (this.messageContent != '') {
+  postHandler(formData: NgForm) {
+    this.messageContent = formData.controls.message.value;
+    if (this.messageContent && this.messageContent != '') {
       this.chatService.postMessage(this.messageContent);
     } else {
       this.addAlert('Error!', 'Message content cannot be empty!', 'danger');
     }
     this.messageContent = '';
+    formData.controls.message.reset();
   }
 
   addAlert(heading: string, message: string, alertClass: string) {

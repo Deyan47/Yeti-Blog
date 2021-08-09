@@ -243,3 +243,26 @@ li span {
 .reset-margin-right {
   margin-right: 0px;
 }
+.comments-ul .img-holder {
+  width: unset;
+  margin-right: 10px;
+  margin-bottom: 0px;
+}
+.comments-ul .img-holder img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.comments-ul li {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.comment-meta {
+  display: flex;
+  justify-content: space-between;
+}
+.comment-auth-date-cont {
+  width: 100%;
+}
