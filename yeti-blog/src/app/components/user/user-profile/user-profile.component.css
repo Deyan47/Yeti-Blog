@@ -90,3 +90,13 @@ hr {
 .isFrozen {
   margin-left: 20px;
 }
+.visit-history {
+  display: flex;
+  flex-direction: column;
+}
+.visits-holder {
+  text-align: center;
+  display: flex;
+  padding-top: 10px;
+  flex-direction: column;
+}

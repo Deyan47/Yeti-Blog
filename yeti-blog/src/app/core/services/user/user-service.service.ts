@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { User } from '../../models/user/user';
+import { Visitation } from '../../models/user/visitation';
 
 import { auth } from 'firebase/app';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -81,6 +82,7 @@ export class UserServiceService {
             email: email,
             bio: bio,
             imgUrl: imgUrl,
+            visitations: [],
           };
   
           this.usersCollection.add(user);
@@ -169,6 +171,16 @@ export class UserServiceService {
     unFreezeUser(user: User) {
       user.isFrozen = false;
       this.updateUser(user);
+    }
+
+    addProfileVisitation(user: User) {
+      if (this.currentUser.id != user.id) {
+        let visitation: Visitation = {
+          visitedOn: new Date().toLocaleString(),
+          visitedBy: this.currentUser,
+        };
+        user.visitations?.push(visitation);
+      }
     }
 
   }
