@@ -144,4 +144,9 @@ export class BlogService {
     }
   }
 
+  incrementBlogViews(blog: Blog, userId: string) {
+    blog.views?.push(userId!);
+    this.updateBlog(blog);
+  }
+
 }
