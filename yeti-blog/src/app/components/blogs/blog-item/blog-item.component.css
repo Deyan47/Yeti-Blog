@@ -9,7 +9,7 @@ img {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   width: 100%;
-  height: 17vw;
+  height: 13vw;
   object-fit: cover;
 }
 .img-holder {
@@ -22,6 +22,7 @@ img {
   flex-basis: 50%;
   text-align: center;
   padding: 10px;
+  width: fit-content;
 }
 .text {
   flex-basis: 50%;
@@ -50,10 +51,7 @@ a {
   right: 0px;
 }
 .text-orange {
-  color: #f47d05;
-}
-.text-blue {
-  color: #024094;
+  color: #aa0861;
 }
 p {
   font-size: 18px;

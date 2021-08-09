@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
-import { ChatMessage } from '../../models/chat/chat';
-import { AngularFireAuth } from 'angularfire2/auth';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+
+import { ChatMessage } from '../../models/chat/chat';
+import { UserServiceService } from '../user/user-service.service';
+
+import { AngularFireAuth } from 'angularfire2/auth';
 import {
   AngularFirestore,
   AngularFirestoreCollection,
   AngularFirestoreDocument,
 } from 'angularfire2/firestore'
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { UserServiceService } from '../user/user-service.service';
 
 @Injectable()
 export class ChatService {

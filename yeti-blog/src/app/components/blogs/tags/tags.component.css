@@ -50,19 +50,26 @@ ul li {
 }
 ul li a {
   text-decoration: none;
-  color: black;
+  color: #fff;
   font-size: 18px;
-  border-radius: 6px;
+  cursor: pointer;
+  width: 10%;
+  outline: none;
+  background-color: #005eff;
   border: 1px solid #024094;
-  padding: 10px 20px;
+  padding: 9px 9px;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 1px;
 }
 .sort-btn {
   cursor: pointer;
   width: 10%;
   outline: none;
-  background-color: #e5e8ed;
-  color: #4a4e53;
-  border: 1px solid #696f79;
-  padding: 5px 10px;
-  border-radius: 6px;
+  background-color: #005eff;
+  color: #fff;
+  border: 1px solid #024094;
+  padding: 5px 5px;
+  border-radius: 50%;
 }

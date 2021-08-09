@@ -1,27 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { Blog } from '../../models/blog/blog';
-import { Achievment } from '../../models/user/achievment';
 import { User } from '../../models/user/user';
 
-import * as firebase from 'firebase/app';
-//import { AngularFireAuth } from '@angular/fire/auth';
+import { auth } from 'firebase/app';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { AngularFireAuthModule } from "@angular/fire/auth";
 import {
   AngularFirestore,
   AngularFirestoreCollection,
   AngularFirestoreDocument,
 } from 'angularfire2/firestore';
-import { AngularFireModule } from 'angularfire2';
-import { auth } from 'firebase/app';
-//import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireStorageModule } from '@angular/fire/storage';
 
 @Injectable()
 export class UserServiceService {

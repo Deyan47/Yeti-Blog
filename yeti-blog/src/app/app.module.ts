@@ -3,93 +3,66 @@ import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule } from "@angular/forms";
 
-import { MatChipsModule } from '@angular/material/chips';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { SharedModule } from './components/shared/shared.module';
-import { HomeComponent } from './components/home/home.component';
-
 import { AngularFireModule } from 'angularfire2';
-//import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
-//import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireStorageModule } from 'angularfire2/storage'
-//import { AngularFirestore } from '@angular/fire/firestore';
-import { AngularFireAuth } from 'angularfire2/auth';
-//import { AngularFirestore } from '@angular/fire/firestore';
-
 import {
   AngularFirestore,
   AngularFirestoreCollection,
   AngularFirestoreDocument,
 } from 'angularfire2/firestore';
-
-//import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
-import { CKEditorModule } from 'ng2-ckeditor';
-
 import { environment } from '../environments/environment';
+
 import { AuthGuard } from './core/guards/auth.guard';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AuthRoutingModule } from './components/auth/auth-routing.module';
 import { BlogsRoutingModule } from './components/blogs/blogs-routing.module';
+import { AdminRoutingModule } from "./components/admin/admin-routing.module";
+
+import { AuthModule } from './components/auth/auth.module';
+import { AdminModule } from './components/admin/admin.module';
+import { BlogsModule } from './components/blogs/blogs.module';
+import { SharedModule } from './components/shared/shared.module';
 
 import { BlogService } from './core/services/blog/blog.service';
 import { UserServiceService } from './core/services/user/user-service.service';
 import { ImgService } from './core/services/img/img.service';
+import { ChatService } from './core/services/chat/chat.service';
 
-import { BlogsComponent } from './components/blogs/blogs/blogs.component';
-import { BlogItemComponent } from './components/blogs/blog-item/blog-item.component';
-import { BlogArticleComponent } from './components/blogs/blog-article/blog-article.component';
-import { CreateBlogComponent } from './components/blogs/create-blog/create-blog.component';
-import { TagsComponent } from './components/blogs/tags/tags.component';
+import { AppComponent } from './app.component';
 import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
 import { LeaderboardComponent } from './components/user/leaderboard/leaderboard.component';
-
-import { AdminRoutingModule } from "./components/admin/admin-routing.module";
-import { ShareModule } from "ngx-sharebuttons";
-import { AdminModule } from "./components/admin/admin.module";
 import { ChatComponent } from './components/chat/chat.component';
-import { ChatService } from './core/services/chat/chat.service';
-import { AuthModule } from './components/auth/auth.module';
-
-
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    BlogsComponent,
-    BlogItemComponent,
-    BlogArticleComponent,
-    CreateBlogComponent,
-    TagsComponent,
     UserProfileComponent,
     LeaderboardComponent,
     ChatComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
-    AuthModule,
+    FormsModule,
+    AppRoutingModule,
     AuthRoutingModule,
     AdminRoutingModule,
     BlogsRoutingModule,
     SharedModule,
     AdminModule,
-    BrowserAnimationsModule,
-    CKEditorModule,
-    FormsModule,
+    AuthModule,
+    BlogsModule,
     AngularFireModule.initializeApp(environment.firebase, 'yeti-blog'),
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
-    MatChipsModule,
-    MatProgressSpinnerModule,
-    ShareModule,
   ],
   providers: [
     BlogService,
@@ -97,7 +70,6 @@ import { AuthModule } from './components/auth/auth.module';
     UserServiceService,
     ImgService,
     ChatService,
-    AngularFireAuthModule,
     AngularFireAuthModule,
     AngularFirestore,
     AngularFireStorageModule,
