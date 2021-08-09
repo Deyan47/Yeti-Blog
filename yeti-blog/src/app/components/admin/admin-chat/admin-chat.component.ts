@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
+
 import { ChatMessage } from 'src/app/core/models/chat/chat';
 import { ChatService } from 'src/app/core/services/chat/chat.service';
 
@@ -7,16 +10,18 @@ import { ChatService } from 'src/app/core/services/chat/chat.service';
   templateUrl: './admin-chat.component.html',
   styleUrls: ['./admin-chat.component.css'],
 })
-export class AdminChatComponent implements OnInit {
-  messages: ChatMessage[] = [];
-  constructor(private chatService: ChatService) {}
+export class AdminChatComponent {
 
-  ngOnInit(): void {
-    this.chatService.getAllMessages().subscribe((messages) => {
-      this.messages = messages.sort((a, b) =>
-        b.createdOn.localeCompare(a.createdOn)
-      );
-    });
+  messages$: Observable<ChatMessage[]>;
+
+  constructor(private chatService: ChatService) {
+    this.messages$ = this.chatService
+      .getAllMessages()
+      .pipe(
+        tap((result) =>
+          result.sort((a, b) => b.createdOn!.localeCompare(a.createdOn!))
+            )
+        );
   }
 
   deleteMessage(message: ChatMessage) {

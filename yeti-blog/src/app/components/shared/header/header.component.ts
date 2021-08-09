@@ -9,19 +9,21 @@ import { UserServiceService } from '../../../core/services/user/user-service.ser
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  public isAdmin: boolean = false;
   public isAdminDropdownShown: boolean = false;
 
   get isLogged(): boolean {
     return this.userService.isLogged;
   }
+
+  get isAdmin(): boolean {
+    return this.userService.isAdmin;
+  }
+
   get user(): User {
     return this.userService.currentUser;
   }
 
-  constructor(private userService: UserServiceService, private router: Router) {
-    this.isAdmin = this.userService.isAdmin;
-  }
+  constructor(private userService: UserServiceService, private router: Router) {}
 
   ngOnInit() {}
 

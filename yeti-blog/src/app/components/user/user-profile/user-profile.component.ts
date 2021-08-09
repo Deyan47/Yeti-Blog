@@ -56,6 +56,11 @@ export class UserProfileComponent implements OnInit {
       });
     });
   }
+
+  get isFrozen(): boolean {
+    return this.userService.currentUser.isFrozen!;
+  }
+
   toggleUserVisitations() {
     this.areVisitationsVisitble = !this.areVisitationsVisitble;
   }
