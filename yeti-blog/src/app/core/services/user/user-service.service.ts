@@ -81,6 +81,7 @@ export class UserServiceService {
             bio: bio,
             imgUrl: imgUrl,
             visitations: [],
+            achievements: [],
           };
   
           this.usersCollection.add(user);
@@ -92,7 +93,6 @@ export class UserServiceService {
         })
         .finally(() => {
           this.router.navigateByUrl('/');
-          window.location.reload();
         });
     }
   

@@ -8,6 +8,9 @@ import { Blog } from '../../../core/models/blog/blog';
 import { UserServiceService } from 'src/app/core/services/user/user-service.service';
 import { LogsService } from 'src/app/core/services/logs/logs.service';
 
+import * as moment from 'moment';
+import { BlogComment } from 'src/app/core/models/blog/comment';
+
 @Component({
   selector: 'app-blog-article',
   templateUrl: './blog-article.component.html',
@@ -58,8 +61,8 @@ export class BlogArticleComponent implements OnInit {
           this.blogNotFound = true;
           return;
         }
-        this.blog.comments?.sort((a, b) =>
-          b.createdOn.localeCompare(a.createdOn)
+        this.blog.comments?.sort(
+          (a, b) => Date.parse(b.createdOn!) - Date.parse(a.createdOn!)
         );
         this.relevantBlog = blogs
           .filter(

@@ -1,5 +1,10 @@
 header {
+  display: block;
+  margin: auto;
   background-color: #0004ff;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  width: 70%;
 }
 
 nav {

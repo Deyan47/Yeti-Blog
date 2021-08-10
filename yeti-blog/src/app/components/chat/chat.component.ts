@@ -6,6 +6,8 @@ import { ChatMessage } from 'src/app/core/models/chat/chat';
 import { ChatService } from 'src/app/core/services/chat/chat.service';
 import { UserServiceService } from 'src/app/core/services/user/user-service.service';
 
+import * as moment from 'moment';
+
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
@@ -25,7 +27,7 @@ export class ChatComponent {
 
     this.chatService.getAllMessages().subscribe((messages) => {
       this.messages = messages
-      .sort((a, b) => b.createdOn.localeCompare(a.createdOn))
+      .sort((a, b) => Date.parse(b.createdOn!) - Date.parse(a.createdOn!))
       .filter((x) => Date.parse(x.createdOn) > this.getYesterday());
     });
   }

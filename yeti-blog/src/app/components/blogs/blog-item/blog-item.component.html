@@ -1,6 +1,6 @@
 <article class="blog" *ngIf="blog" (mouseover)="zoomIn()" (mouseout)="zoomOut()">
     <section class="img-holder">
-        <img [src]="blog.imgUrl" [@imageState]="[position]">
+        <img [src]="blog.imgUrl" [@imageState]="[position]" routerLink="/blogs/blog/{{blog.id}}">
     </section>
     <section class="blog-content">
         <h2>{{blog.title}}</h2>
@@ -16,8 +16,7 @@
         </ng-content>
 
         <a (click)="incrementBlogViews(blog)" routerLink="/blogs/blog/{{blog.id}}">
-            <span class="text-orange">Read </span>
-            <span class="text-blue">More...</span>
+            <span class="text-orange">Read more..</span>
         </a>
     </section>
 </article>
