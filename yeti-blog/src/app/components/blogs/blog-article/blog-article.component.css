@@ -182,25 +182,28 @@ li span {
 .bookmark-btn i {
   color: blue;
 }
-.btn {
+.edit-btn {
   outline: none;
   border: none;
-  background-color: white;
-}
-.edit-btn {
-  color: #fff;
+  color: rgb(22, 6, 6);
   background-color: #024094;
   border: 1px solid #024094;
   padding: 5px 10px;
 }
 .cancel-btn {
-  color: #fff;
+  outline: none;
+  border: none;
+  background-color: white;
+  color: rgb(19, 18, 18);
   background-color: #e29505;
   padding: 5px 10px;
   margin-left: 20px;
 }
 .delete-btn {
-  color: white;
+  outline: none;
+  border: none;
+  background-color: white;
+  color: rgb(14, 13, 13);
   background-color: red;
   border: 1px solid red;
   padding: 5px 10px;
@@ -282,4 +285,7 @@ li span {
 .spinner {
   margin: 0 auto;
   margin-top: 20px;
+}
+.btn-danger {
+  float: right;
 }

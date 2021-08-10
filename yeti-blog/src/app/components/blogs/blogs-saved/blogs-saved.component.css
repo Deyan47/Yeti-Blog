@@ -23,3 +23,6 @@ button {
 .spinner {
   margin: 0 auto;
 }
+article.blog-content-holder img {
+  max-width: 100% !important;
+}

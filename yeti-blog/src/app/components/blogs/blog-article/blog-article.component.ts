@@ -169,4 +169,11 @@ export class BlogArticleComponent implements OnInit {
       this.error = {};
     });
   }
+
+  deleteComment(blog: Blog, comment: BlogComment) {
+    if (confirm('Are you sure you want to delete this comment?')) {
+      this.blogService.deleteComment(blog, comment);
+    }
+  }
+
 }
