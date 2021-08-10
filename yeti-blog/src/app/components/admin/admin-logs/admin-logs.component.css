@@ -17,6 +17,7 @@ td .img-holder img {
   width: 100%;
 }
 h1 {
+  display: inline-block;
   color: white;
   padding-top: 20px;
   margin-bottom: 20px;
@@ -30,4 +31,12 @@ table {
 }
 .table {
   vertical-align: middle;
+}
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+button {
+  margin-left: 10px;
 }

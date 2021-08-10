@@ -50,3 +50,15 @@ h1 {
   font-size: 23px;
   font-weight: bold;
 }
+.viewers-card {
+  background-color: #6c8770;
+}
+.city-card {
+  background-color: #380036;
+}
+.page-card {
+  background-color: #ff6b35;
+}
+.userip-card {
+  background-color: #6f584b;
+}
