@@ -18,7 +18,6 @@ export class UserProfileComponent implements OnInit {
   blogs!: Blog[];
   userId!: string;
   user!: User;
-  //achievements!: Achievment[];
   areVisitationsVisitble: boolean = false;
 
   get isUserOwnerOfProfile(): boolean {
@@ -36,12 +35,16 @@ export class UserProfileComponent implements OnInit {
     private achievementService: AchievementService
   ) {
     this.logsService.addRecord('user-profile');
-  }
   
-
-  ngOnInit(): void {
     this.route.params.subscribe((routeParams) => {
       this.userId = Object.values(routeParams)[0];
+      this.userService.getAllUsers().subscribe((users) => {
+        this.user = users.filter((x) => x.id == this.userId)[0];
+        this.userService.addProfileVisitation(this.user);
+        this.user.visitations
+          ?.sort((a, b) => b.visitedOn!.localeCompare(a.visitedOn!))
+          .slice(0, 10);
+      });
 
       this.achievementService.checkIfUserIsEligbleForBlogAchievements(
         this.userId
@@ -57,19 +60,16 @@ export class UserProfileComponent implements OnInit {
       this.blogService.getAllBlogs().subscribe((blogs) => {
         this.blogs = blogs.filter((x) => x.user.id == this.userId);
       });
-      this.userService.getAllUsers().subscribe((users) => {
-        this.user = users.filter((x) => x.id == this.userId)[0];
-        this.userService.addProfileVisitation(this.user);
-        this.user.visitations
-          ?.sort((a, b) => b.visitedOn!.localeCompare(a.visitedOn!))
-          .slice(0, 10);
-      });
+     
     });
   }
 
   get isFrozen(): boolean {
     return this.user.isFrozen!;
   }
+
+  ngOnInit(): void {}
+
 
   toggleUserVisitations() {
     this.areVisitationsVisitble = !this.areVisitationsVisitble;
