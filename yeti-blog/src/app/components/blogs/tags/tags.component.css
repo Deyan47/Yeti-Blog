@@ -3,14 +3,21 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  padding-bottom: 50px;
+  background: salmon;
+  min-height: 100%;
+  min-width: 1024px;
+  width: 100%;
+  height: auto;
 }
 
 h1 {
   font-weight: 400;
   font-size: 60px;
   margin-top: 30px;
-  font-family: "orange juice", sans-serif;
+  font-family: "Love Ya Like A Sister", "cursive";
   margin-bottom: 30px;
+  color: #fff;
 }
 .blog-cards {
   display: flex;
@@ -41,7 +48,8 @@ h1 {
   font-weight: 400;
   font-size: 35px;
   text-align: center;
-  font-family: "orange juice", sans-serif;
+  font-family: "Love Ya Like A Sister", "cursive";
+  color: #fff;
 }
 ul {
   list-style-type: none;

@@ -17,7 +17,7 @@ h1 {
   margin-bottom: 30px;
   font-weight: bold;
   font-size: 60px;
-  font-family: "orange juice", sans-serif;
+  font-family: "Love Ya Like A Sister", "cursive";
   color: #fff;
 }
 .cta {
@@ -32,6 +32,7 @@ h3 {
   margin-top: 0px;
   font-size: 20px;
   color: #fff;
+  font-family: "Chilanka", "cursive";
 }
 article {
   flex-basis: 50%;

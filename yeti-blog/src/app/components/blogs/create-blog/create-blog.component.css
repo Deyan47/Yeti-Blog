@@ -1,24 +1,25 @@
 .save-btn {
-  font-size: 18px;
-  margin-top: 15px;
+  font-size: 29px;
+  margin-top: -28px;
   display: inline-block;
   margin-bottom: 70px;
-  margin-left: 553px;
+  margin-left: 496px;
   cursor: pointer;
   outline: none;
   background-color: #005eff;
   color: #fff;
-  padding: 12px 25px;
+  padding: 22px 53px;
   border-radius: 15px;
 }
 
 h1 {
   text-align: center;
   font-size: 60px;
-  font-family: "orange juice", sans-serif;
+  font-family: "Love Ya Like A Sister", "cursive";
 }
 h3 {
   font-weight: 500;
+  font-family: "Chilanka", "cursive";
 }
 .input {
   margin-bottom: -20px;
@@ -38,6 +39,7 @@ input {
   font-size: 20px;
   padding-bottom: 5px;
   border-bottom: 1px solid #024094;
+  font-family: "Chilanka", "cursive";
 }
 
 .editor {
