@@ -22,13 +22,6 @@
                 </p>
             </article>
 
-            <article class="card logs-card" routerLink='/admin/logs'>
-                <p class="card-title">IP Logs saved</p>
-                <p class="card-content">
-                    <i class="fas fa-sign-in-alt"></i>
-                    {{logs?.length}}
-                </p>
-            </article>
             <article class="card messages-card" routerLink='/admin/chat'>
                 <p class="card-title">Chat messages sent</p>
                 <p class="card-content">
@@ -36,6 +29,7 @@
                     {{(messages$| async)?.length}}
                 </p>
             </article>
+            
             <article class="card viewers-card" routerLink='/admin/logs'>
                 <p class="card-title">Most visitors from country</p>
                 <p class="card-content">
@@ -48,20 +42,6 @@
                 <p class="card-content">
                     <i class="fas fa-map-marker-alt"></i>
                     {{mostViewsFromCityName}}
-                </p>
-            </article>
-            <article class="card page-card" routerLink='/admin/logs'>
-                <p class="card-title">Most viewed page</p>
-                <p class="card-content">
-                    <i class="fab fa-hotjar"></i>
-                    {{mostViewedPageName}}
-                </p>
-            </article>
-            <article class="card userip-card" routerLink='/admin/logs'>
-                <p class="card-title">Most active user IP</p>
-                <p class="card-content" (mouseover)="showIp()" (mouseout)="hideIp()">
-                    <i class="far fa-address-card"></i>
-                    {{mostActiveUserIp}}
                 </p>
             </article>
         </section>

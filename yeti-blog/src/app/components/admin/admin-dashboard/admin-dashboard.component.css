@@ -11,6 +11,8 @@
 h1 {
   text-align: center;
   color: #fff;
+  font-size: 60px;
+  font-family: "orange juice", sans-serif;
 }
 .spinner {
   margin: 0 auto;
@@ -32,16 +34,13 @@ h1 {
   font-weight: 500;
 }
 .user-card {
-  background-color: #3b76ef;
+  background-color: #0004ff;
 }
 .blogs-card {
-  background-color: #6dd4b1;
-}
-.logs-card {
-  background-color: #a66dd4;
+  background-color: #08eb00;
 }
 .messages-card {
-  background-color: #63c7ff;
+  background-color: #bac702;
 }
 .card-title {
   font-size: 16px;
@@ -51,14 +50,8 @@ h1 {
   font-weight: bold;
 }
 .viewers-card {
-  background-color: #6c8770;
+  background-color: #dd0f0f;
 }
 .city-card {
-  background-color: #380036;
-}
-.page-card {
-  background-color: #ff6b35;
-}
-.userip-card {
-  background-color: #6f584b;
+  background-color: #ff3b6c;
 }

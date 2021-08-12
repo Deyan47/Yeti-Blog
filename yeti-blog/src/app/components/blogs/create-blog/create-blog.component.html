@@ -1,28 +1,28 @@
 <article class="card-holder">
     <app-alert [alert]="error" *ngIf="error"></app-alert>
     <h3 class="card-title">
-        <h1>Add a new blog!</h1>
+        <h1>Add a new blog</h1>
     </h3>
     <mat-spinner class="spinner" *ngIf="isLoading"></mat-spinner>
     <form (ngSubmit)="onSubmit(imgUrl)" *ngIf="!isLoading && !isFrozen">
         <div class="title-and-img">
             <div class="row">
-                <h3>Add a title to your blog!</h3>
-                <input type="text" placeholder="I like cats!" name="title" [(ngModel)]="this.blog.title">
+                <h3>Blog title:</h3>
+                <input type="text" placeholder="Grand canyon" name="title" [(ngModel)]="this.blog.title">
             </div>
 
             <div class="row">
-                <h3>Add an image your blog!</h3>
+                <h3>Upload an image</h3>
                 <input type="file" required id="file" #imgUrl name="image" />
             </div>
 
             <div class="tags-row">
-                <h3>Add tags to your blog!</h3>
+                <h3>Choose tags for the blog:</h3>
                 <mat-chip-list #chipList aria-label="Tags selection">
                     <mat-chip *ngFor="let tag of blog.tags">
                         {{tag}}
                     </mat-chip>
-                    <input placeholder="cute, dog, tree, informative" [(ngModel)]="tags" name="tags">
+                    <input placeholder="Nature" [(ngModel)]="tags" name="tags">
                 </mat-chip-list>
             </div>
 
@@ -30,8 +30,8 @@
         <section class="editor">
             <ckeditor [(ngModel)]="this.blog.content" name="ckeditorContent">
             </ckeditor>
-            <button class="save-btn" type="submit"><i class="fas fa-save"></i></button>
         </section>
+        <button class="save-btn" type="submit">Submit</button>
 
     </form>
 

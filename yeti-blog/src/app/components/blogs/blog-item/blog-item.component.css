@@ -4,6 +4,7 @@
   flex-direction: column;
   justify-content: space-around;
   min-width: 220px;
+  background: white;
 }
 
 img {
@@ -15,6 +16,7 @@ img {
 }
 .img-holder {
   flex-basis: 50%;
+  border-bottom: 5px solid #005eff;
 }
 .blog-content {
   position: relative;
@@ -34,7 +36,6 @@ img {
   margin-bottom: 30px;
 }
 .popularity-markers i {
-  font-weight: 200;
   font-size: 18px;
 }
 .fa-heart {
@@ -42,6 +43,9 @@ img {
 }
 .fa-comments {
   color: #024094;
+}
+.fas {
+  margin-right: 7px;
 }
 a {
   text-align: right;
@@ -51,8 +55,11 @@ a {
   bottom: 10px;
   right: 0px;
 }
-.text-orange {
-  color: #aa0861;
+.read-more {
+  color: black;
+}
+.read-more:hover {
+  color: salmon;
 }
 p {
   font-size: 18px;

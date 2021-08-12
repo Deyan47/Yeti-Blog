@@ -17,7 +17,7 @@ import { UserServiceService } from 'src/app/core/services/user/user-service.serv
   styleUrls: ['./blog-item.component.css'],
   animations: [
     trigger('imageState', [
-      state('zoomIn', style({ transform: 'scale(1.12)', offset: 1 })),
+      state('zoomIn', style({ transform: 'scale(0.95)', offset: 1 })),
       transition('* => *', animate('1000ms ease')),
     ]),
   ],

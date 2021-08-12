@@ -1,7 +1,7 @@
 <section class="chat-holder">
     <section *ngIf="isLogged" class="chat">
         <app-alert [alert]="error" *ngIf="error"></app-alert>
-        <h1>Welcome to the public discussion chat!</h1>
+        <h1>Public discussion chat</h1>
 
         <form #form='ngForm' *ngIf="!isFrozen" (ngSubmit)="postHandler(form)">
             <article class="send">

@@ -1,21 +1,27 @@
 .save-btn {
-  top: 10px;
-  left: 81px;
-  position: absolute;
-  color: blue;
   font-size: 18px;
-  border: none;
-}
-.save-btn:hover {
-  border: 2px solid #f47d05;
+  margin-top: 15px;
+  display: inline-block;
+  margin-bottom: 70px;
+  margin-left: 553px;
+  cursor: pointer;
+  outline: none;
+  background-color: #005eff;
+  color: #fff;
+  padding: 12px 25px;
+  border-radius: 15px;
 }
 
 h1 {
   text-align: center;
-  font-size: 30px;
+  font-size: 60px;
+  font-family: "orange juice", sans-serif;
 }
 h3 {
   font-weight: 500;
+}
+.input {
+  margin-bottom: -20px;
 }
 .title-and-img {
   text-align: center;
@@ -35,9 +41,10 @@ input {
 }
 
 .editor {
-  width: 65%;
+  width: 80%;
   position: relative;
   margin: 20px auto;
+  margin-bottom: 70px;
 }
 .card-holder {
   width: 80%;

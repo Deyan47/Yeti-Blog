@@ -2,6 +2,7 @@
   background-color: #fff;
   min-height: 85vh;
   padding-bottom: 60px;
+  background: salmon;
 }
 .not-logged {
   color: red;
@@ -9,6 +10,9 @@
 h1 {
   padding-top: 20px;
   text-align: center;
+  font-size: 60px;
+  font-family: "orange juice", sans-serif;
+  color: #fff;
 }
 textarea {
   outline: none;

@@ -2,9 +2,6 @@
     <div #loader class="loader" [class.notDisplay]="!loaderDisplay"></div>
     <form #form='ngForm' [class.notDisplay]="!formDisplay">
         <h2>Register</h2>
-        <div class="illustration">
-            <i class="fas fa-user-plus"></i>
-        </div>
         <div>
             <input type="text" #username='ngModel' name="username" placeholder="Username" ngModel required>
             <div *ngIf="username.touched &&username.errors?.required" class="validation-error">Username is required!
@@ -44,7 +41,7 @@
         </div>
         <div class="bio-holder">
             <label>
-                <p>Tell us a bit about yourself:</p>
+                <p>Tell us a something about yourself:</p>
                 <textarea name="biography" #bio='ngModel' rows="4" cols="50" ngModel required></textarea>
             </label>
             <div *ngIf="bio.touched &&bio.errors?.required" class="validation-error">Bio is required!

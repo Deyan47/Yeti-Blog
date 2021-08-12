@@ -1,18 +1,16 @@
 header {
-  display: block;
-  margin: auto;
   background-color: #0004ff;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
-  width: 70%;
+  position: relative;
+  z-index: 9;
 }
-
 nav {
   display: flex;
   align-items: center;
   width: 80%;
   justify-content: center;
   margin: 0 auto;
+  position: relative;
+  z-index: 9;
 }
 .logo-holder {
   width: 70px;
@@ -22,7 +20,6 @@ nav {
   width: 50px;
   height: 50px;
   object-fit: cover;
-  cursor: pointer;
 }
 header ul {
   display: flex;
@@ -36,6 +33,7 @@ header ul li a {
   color: #fff;
   font-size: 15px;
   text-decoration: none;
+  font-family: "Chilanka", "cursive";
 }
 .profile-pic {
   width: 80px;
@@ -69,9 +67,14 @@ a {
   margin: 5px;
 }
 .dropdown-content a:nth-child(1),
-.dropdown-content a:nth-child(2) .dropdown-content a:nth-child(2),
+.dropdown-content a:nth-child(2),
 .dropdown-content a:nth-child(3),
 .dropdown-content a:nth-child(4) {
   margin-bottom: 10px;
   border-bottom: 1px solid rgb(114, 111, 111);
+}
+.fa-bars {
+  display: none;
+  color: white;
+  font-size: 25px;
 }

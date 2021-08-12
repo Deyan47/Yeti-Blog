@@ -1,11 +1,11 @@
 .admin-users-page {
   padding-bottom: 100px;
   min-height: 85.7vh;
-  background-color: #181818;
+  background-color: salmon;
 }
 table {
   color: white !important;
-  background-color: #343a40;
+  background-color: salmon;
 }
 .table-striped > tbody > tr:nth-of-type(odd) {
   color: white !important;
@@ -19,8 +19,10 @@ td .img-holder img {
 h1 {
   padding-top: 20px;
   margin-bottom: 20px;
-  font-size: 30px;
   text-align: center;
+  font-size: 60px;
+  color: #fff;
+  font-family: "orange juice", sans-serif;
 }
 .table {
   vertical-align: middle;
