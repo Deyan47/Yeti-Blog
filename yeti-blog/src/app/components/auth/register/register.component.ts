@@ -47,7 +47,7 @@ export class RegisterComponent implements OnInit {
     this.imageUploadService.uploadImage(username, profilePic, 'ProfileImages');
 
     this.subscriptions.push(
-      interval(3000)
+      interval(4000)
         .pipe()
         .subscribe(() => {
           this.userService
