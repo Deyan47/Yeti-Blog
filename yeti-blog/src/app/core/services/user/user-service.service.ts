@@ -58,9 +58,7 @@ export class UserServiceService {
         this.users.subscribe((users) => {
           let user = users.filter((x) => x.email === email)[0];
           this.addUserToLocalStorage(JSON.stringify(user));
-          this.router.navigateByUrl('/').then(()=>{
-            window.location.reload()
-          })
+          this.router.navigateByUrl('/');
         });
       });
   }
@@ -93,9 +91,7 @@ export class UserServiceService {
         });
       })
       .finally(() => {
-        this.router.navigateByUrl('/').then(()=>{
-          window.location.reload()
-        })
+        this.router.navigateByUrl('/');
       });
   }
 
@@ -121,9 +117,7 @@ export class UserServiceService {
       .catch((err) => alert(err.message))
       .finally(() => {
         localStorage.removeItem('user_data');
-        this.router.navigateByUrl('/').then(()=>{
-          window.location.reload()
-        })
+        this.router.navigateByUrl('/');
       });
   }
 
