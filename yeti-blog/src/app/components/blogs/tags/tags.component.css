@@ -36,6 +36,7 @@ h1 {
 .content {
   padding: 0px 50px;
   display: flex;
+  padding-bottom: 50px;
 }
 .cards {
   flex-basis: 85%;
