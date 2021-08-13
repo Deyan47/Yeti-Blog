@@ -10,7 +10,6 @@ import { AchievementService } from 'src/app/core/services/achievement/achievemen
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  public isAdminDropdownShown: boolean = false;
 
   get isLogged(): boolean {
     return this.userService.isLogged;
@@ -37,7 +36,4 @@ export class HeaderComponent implements OnInit {
     this.router.navigateByUrl('/');
   }
 
-  toggleAdminDropdown() {
-    this.isAdminDropdownShown = !this.isAdminDropdownShown;
-  }
 }
