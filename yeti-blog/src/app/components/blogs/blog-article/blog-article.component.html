@@ -80,7 +80,7 @@
                 <button *ngIf="!this.commentingState && this.isLogged && !isFrozen" (click)="enableCommenting()"
                     class="comments-btn">+
                     Add a comment</button>
-                <p *ngIf="!this.isLogged">Please login to add a comment!</p>
+                <p *ngIf="!this.isLogged" routerLink="/auth/login" class="not-auth">Please <span class="login">login</span> to add a comment!</p>
                 <section class="frozen" *ngIf="isFrozen">
                     <p>You have been frozen by the administrator and therefore cannot write comments!</p>
                 </section>

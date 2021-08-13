@@ -27,9 +27,10 @@
             emailInput.errors?.required || emailInput.errors?.email || passwordInput.errors?.required
             ">Log In</button>
 
+            <span>Or</span>
+
             <button type="button" class="google-login" (click)="googleAuth()">
-                <img src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png"
-                    alt="Google-Logo">
+                <i class="fab fa-google"></i>
                 Sign in with Google
             </button>
             <p class="google-login-disclaimer">Works only for registered users</p>

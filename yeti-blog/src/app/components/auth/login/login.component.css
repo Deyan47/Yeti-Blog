@@ -20,6 +20,10 @@
   font-size: 40px;
 }
 
+.fab {
+  color: #fff;
+}
+
 .login-section form {
   flex-direction: column;
   display: flex;

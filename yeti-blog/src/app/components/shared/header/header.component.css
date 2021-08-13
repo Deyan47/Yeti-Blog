@@ -32,9 +32,12 @@ header ul {
 header ul li a {
   margin: 15px;
   color: #fff;
-  font-size: 15px;
+  font-size: 17px;
   text-decoration: none;
   font-family: "Chilanka", "cursive";
+}
+header ul li a:hover {
+  color: black;
 }
 .profile-pic {
   width: 80px;
@@ -51,6 +54,9 @@ a {
   margin-top: 25px;
   width: 70%;
   z-index: 1;
+}
+.dropdown-content a:hover {
+  color: black;
 }
 
 .admin-holder {

@@ -288,3 +288,10 @@ li span {
 .btn-danger {
   float: right;
 }
+.not-auth {
+  font-size: 17px;
+  cursor: pointer;
+}
+.login {
+  color: #00b900;
+}
