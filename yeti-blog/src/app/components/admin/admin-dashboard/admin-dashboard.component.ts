@@ -25,18 +25,10 @@ export class AdminDashboardComponent implements OnInit {
   messages$: Observable<ChatMessage[]>;
 
   mostViewsFromCountryName!: string;
-  mostViewsFromCityName!: string;
-  mostViewedPageName!: string;
-  mostActiveUserIp!: string;
-
-  private mostActiveUserIpHolder!: string;
 
   get areLogsLoaded(): boolean {
     return (
-      this.mostViewsFromCountryName != undefined &&
-      this.mostViewsFromCityName != undefined &&
-      this.mostViewedPageName != undefined &&
-      this.mostActiveUserIp != undefined
+      this.mostViewsFromCountryName != undefined
     );
   }
 
@@ -61,12 +53,6 @@ export class AdminDashboardComponent implements OnInit {
         (a: any, b: any) => b.length - a.length
       )[0] as any;
       this.mostViewsFromCountryName = mostViewsFromCountryData[0].country_name;
-      this.mostViewsFromCityName = mostViewsFromCountryData[0].city;
-      this.mostViewedPageName = mostViewsFromCountryData[0].page_location;
-      this.mostActiveUserIpHolder = mostViewsFromCountryData[0].ip;
-
-      this.mostActiveUserIp = this.mostActiveUserIpHolder;
-      this.hideIp();
     });
   }
 
@@ -82,14 +68,5 @@ export class AdminDashboardComponent implements OnInit {
     }
   
     ngOnInit(): void {}
-
-    showIp() {
-      this.mostActiveUserIp = this.mostActiveUserIpHolder;
-    }
-    hideIp() {
-      this.mostActiveUserIp =
-        this.mostActiveUserIpHolder.substring(0, 3) +
-        '*'.repeat(this.mostActiveUserIpHolder.length - 3);
-    }
 
   }

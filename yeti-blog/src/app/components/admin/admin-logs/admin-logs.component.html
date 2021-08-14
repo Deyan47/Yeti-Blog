@@ -8,10 +8,8 @@
                 <th>#</th>
                 <th>Id:</th>
                 <th>IP Address:</th>
-                <th>Page:</th>
                 <th>City:</th>
                 <th>Country Code:</th>
-                <th>Continent Code:</th>
                 <th>CreatedOn:</th>
                 <th>Delete record</th>
             </tr>
@@ -21,10 +19,8 @@
                 <td>{{i+1}}</td>
                 <td>{{log.id}}</td>
                 <td>{{log.ip}}</td>
-                <td>{{log.page_location}}</td>
                 <td>{{log.city}}</td>
                 <td>{{log.country_code}}</td>
-                <td>{{log.continent_code}}</td>
                 <td>{{log.createdOn}}</td>
                 <td>
                     <button (click)="deleteRecord(log)" class="btn btn-danger">
